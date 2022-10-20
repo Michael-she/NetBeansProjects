@@ -298,7 +298,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
     private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
 
  new frmAddComponent().setVisible(true);
-
+//Hello
  
  this.dispose();
 // TODO add your handling code here:
