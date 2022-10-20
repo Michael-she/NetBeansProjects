@@ -32,6 +32,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         
         db.disconnectDB();
         filtersPanel.setVisible(false);
+        
+        btnDelete.setEnabled(false);
+        btnEdit.setEnabled(false);
     }
 
     /**
