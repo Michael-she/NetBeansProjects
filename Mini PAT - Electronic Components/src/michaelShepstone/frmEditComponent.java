@@ -216,6 +216,8 @@ public class frmEditComponent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtComponentNameActionPerformed
 
+    
+    
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
 
         String componentName = txtComponentName.getText();

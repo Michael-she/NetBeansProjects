@@ -7,6 +7,7 @@ package michaelShepstone;
 
 import java.time.LocalDate;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,7 +49,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         BtnView = new javax.swing.JButton();
         BtnAdd = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         filtersPanel = new javax.swing.JPanel();
         lblReleaseDate = new javax.swing.JLabel();
@@ -116,7 +117,12 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Delete");
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         jToggleButton1.setText("Filter:");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +181,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                                     .addComponent(BtnView)
                                     .addComponent(BtnAdd)
                                     .addComponent(btnEdit)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -203,7 +209,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BtnAdd, BtnView, btnEdit, jButton4});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BtnAdd, BtnView, btnDelete, btnEdit});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +228,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnEdit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4))
+                                .addComponent(btnDelete))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(286, 286, 286)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -280,7 +286,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void ComponentsLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ComponentsLstValueChanged
-        System.out.println("Changed");
+        //System.out.println("Changed");
        
         
          
@@ -292,6 +298,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
          lblReleaseDate.setText(""+((Component)ComponentsLst.getSelectedValue()).getReleaseDate());
          lblSMD.setText(""+((Component)ComponentsLst.getSelectedValue()).isSMD());
          
+         
+         btnEdit.setEnabled(true);
+         btnDelete.setEnabled(true);
        
     }//GEN-LAST:event_ComponentsLstValueChanged
 
@@ -319,6 +328,23 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 
                 
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        
+          if(ComponentsLst.getSelectedIndex() == -1){
+        
+            System.out.println("Nothing is selected");
+        
+    }else{
+         //   ).setVisible(true);
+Component selected = (Component)ComponentsLst.getSelectedValue();
+ int option = JOptionPane.showConfirmDialog(null, "DELETE" + selected, "DELETE COMPONENT", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+ this.dispose();
+            
+        }
+        
+        
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,9 +388,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
     private javax.swing.JButton BtnView;
     private javax.swing.JPanel Components;
     private javax.swing.JList<Object> ComponentsLst;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JPanel filtersPanel;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
