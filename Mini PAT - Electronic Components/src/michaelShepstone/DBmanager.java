@@ -25,7 +25,7 @@ public class DBmanager {
         try{
         connection  = DriverManager.getConnection("jdbc:ucanaccess://ElectronicsComp.accdb");
         
-        System.out.println("Connection Sucsesful");
+      //  System.out.println("Connection Sucsesful");
         }
         catch(SQLException e){
             
@@ -39,7 +39,7 @@ public class DBmanager {
         try{
             connection.close();
             
-            System.out.println("Connection Disconnected Sucsesfully");
+          //  System.out.println("Connection Disconnected Sucsesfully");
         }catch (Exception e){
             System.out.println("Disconnect Failed");
             
@@ -228,7 +228,7 @@ public class DBmanager {
             LocalDate releaseDate = results.getDate("ReleaseDate").toLocalDate();
             
             
-            System.out.println(componentID + " | "+componentName+" | " + componentPrice + " | Quantity = " + componentQuantity+" | SMD = " +smd + " Release Date: " + releaseDate);
+           // System.out.println(componentID + " | "+componentName+" | " + componentPrice + " | Quantity = " + componentQuantity+" | SMD = " +smd + " Release Date: " + releaseDate);
             
             disconnectDB();
             
@@ -295,7 +295,7 @@ public class DBmanager {
         try{
         connectDB();
         
-            String SQL = "DELETE FROM TBLComponents WHERE ComponentID = '"+ inComponent.getId()+";";
+            String SQL = "DELETE FROM TBLComponents WHERE ComponentID = "+ inComponent.getId()+";";
      
             Statement s = connection.createStatement();
             

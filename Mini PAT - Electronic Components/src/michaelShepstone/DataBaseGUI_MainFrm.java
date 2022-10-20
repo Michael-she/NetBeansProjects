@@ -37,6 +37,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         btnEdit.setEnabled(false);
     }
 
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -264,6 +265,10 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+     
+     
+     
     private void BtnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnViewActionPerformed
        DBmanager db = new DBmanager();
         
@@ -293,8 +298,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
        
         
          
-         System.out.println(((Component)ComponentsLst.getSelectedValue()).getComponentPrice());
+//         System.out.println(((Component)ComponentsLst.getSelectedValue()).getComponentPrice());
          
+if(ComponentsLst.getSelectedIndex() != -1){
          lblName.setText(((Component)ComponentsLst.getSelectedValue()).getComponentName());
          lblPrice.setText(""+((Component)ComponentsLst.getSelectedValue()).getComponentPrice());
          lblQuantity.setText(""+((Component)ComponentsLst.getSelectedValue()).getComponentQuantity());
@@ -304,7 +310,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
          
          btnEdit.setEnabled(true);
          btnDelete.setEnabled(true);
-       
+}
     }//GEN-LAST:event_ComponentsLstValueChanged
 
     private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
@@ -343,7 +349,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 Component selected = (Component)ComponentsLst.getSelectedValue();
 
 //Window to ask if the object is to be deleted, 0 is yes, 1 is no
- int option = JOptionPane.showConfirmDialog(null, "DELETE" + selected, "DELETE COMPONENT", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+ int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete \""+selected.getComponentName()+"\"?\nThis action is very permanent and cannot be undone.","DELETE" , JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
  
               System.out.println(option);
               
@@ -351,9 +357,10 @@ Component selected = (Component)ComponentsLst.getSelectedValue();
               if(option == 0){
                   
                   DBmanager db = new DBmanager();
-                  
+                  System.out.println("Deleting component");
                   db.deleateComponent(selected);
-                  
+                  System.out.println("About to refresh");
+                  refresh();
               }
             
         }
@@ -397,6 +404,28 @@ Component selected = (Component)ComponentsLst.getSelectedValue();
             }
         });
     }
+    
+    
+    public void refresh() {
+          
+          
+           DBmanager db = new DBmanager();
+        
+        db.connectDB();
+         System.out.println("REFRESHED 1 / 3");
+      
+        ComponentsLst.setListData(db.getAllComponents());
+        
+         
+        db.disconnectDB();
+        
+        System.out.println("REFRESHED  2 / 3");
+        filtersPanel.setVisible(false);
+        
+        btnDelete.setEnabled(false);
+        btnEdit.setEnabled(false);
+         System.out.println("REFRESHED 3 / 3");
+      }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAdd;

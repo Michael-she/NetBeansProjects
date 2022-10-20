@@ -20,6 +20,7 @@ public class frmAddComponent extends javax.swing.JFrame {
         initComponents();
         lblGeneralError.setVisible(false);
         lblDateError.setVisible(false);
+        lblNameError.setVisible(false);
     }
 
     /**

@@ -19,7 +19,9 @@ public class frmEditComponent extends javax.swing.JFrame {
      */
     private int componentID = -1;
      public frmEditComponent( ) {
-        
+         setSize(1000, 600);
+         setLocation(100, 200);
+                
          //Component returnComponent 
         
         initComponents();
@@ -38,6 +40,13 @@ public class frmEditComponent extends javax.swing.JFrame {
         
        
         tglSMD.setSelected(oldComponent.isSMD());
+      if(tglSMD.isSelected()){
+            tglSMD.setText("TRUE");
+        }else{
+            tglSMD.setText("FALSE");
+        }
+         
+         
         spnPrice.setValue(oldComponent.getComponentPrice());
         spnQuantity.setValue(oldComponent.getComponentQuantity());
         txtComponentName.setText(oldComponent.getComponentName());
