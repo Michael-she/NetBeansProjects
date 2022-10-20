@@ -23,6 +23,10 @@ public class frmEditComponent extends javax.swing.JFrame {
          //Component returnComponent 
         
         initComponents();
+        
+          lblGeneralError.setVisible(false);
+        lblDateError.setVisible(false);
+        lblNameError.setVisible(false);
     }
      
     public frmEditComponent( Component oldComponent ) {
@@ -39,8 +43,9 @@ public class frmEditComponent extends javax.swing.JFrame {
         txtComponentName.setText(oldComponent.getComponentName());
         componentID = oldComponent.getId();
         
-         
-         
+           lblGeneralError.setVisible(false);
+        lblDateError.setVisible(false);
+         lblNameError.setVisible(false);
        
     }
 
@@ -232,9 +237,17 @@ public class frmEditComponent extends javax.swing.JFrame {
         
         DBmanager db = new DBmanager();
         
+        if(componentName.isBlank()){
+                lblNameError.setVisible(true);
+                lblGeneralError.setVisible(true);
+
+            }
+        else if(releaseDate == null){
+                lblDateError.setVisible(true);
+                lblGeneralError.setVisible(true);
+            }
         
-        
-        if(db.editComponent(returnComponent)){
+     else   if(db.editComponent(returnComponent)){
 
             new DataBaseGUI_MainFrm().setVisible(true);
 
@@ -242,13 +255,7 @@ public class frmEditComponent extends javax.swing.JFrame {
 
         else{
             lblGeneralError.setVisible(true);
-            if(componentName.isBlank()){
-                lblNameError.setVisible(true);
-
-            }
-            if(releaseDate == null){
-                lblDateError.setVisible(true);
-            }
+            
 
         }
 

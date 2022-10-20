@@ -341,8 +341,20 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
     }else{
          //   ).setVisible(true);
 Component selected = (Component)ComponentsLst.getSelectedValue();
- int option = JOptionPane.showConfirmDialog(null, "DELETE" + selected, "DELETE COMPONENT", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
- this.dispose();
+
+//Window to ask if the object is to be deleted, 0 is yes, 1 is no
+ int option = JOptionPane.showConfirmDialog(null, "DELETE" + selected, "DELETE COMPONENT", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+ 
+              System.out.println(option);
+              
+              //logic connected to previous lines
+              if(option == 0){
+                  
+                  DBmanager db = new DBmanager();
+                  
+                  db.deleateComponent(selected);
+                  
+              }
             
         }
         

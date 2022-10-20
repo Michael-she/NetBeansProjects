@@ -291,5 +291,28 @@ public class DBmanager {
         }
         
     }
+     public boolean deleateComponent(Component inComponent){
+        try{
+        connectDB();
+        
+            String SQL = "DELETE FROM TBLComponents WHERE ComponentID = '"+ inComponent.getId()+";";
+     
+            Statement s = connection.createStatement();
+            
+            System.out.println(SQL);
+            
+            s.execute(SQL);
+            
+            
+        disconnectDB();
+        
+        return true;
+        }catch(SQLException e){
+             System.out.println("Error in editComponent Method " + e);
+             return false;
+        }
+        
+    }
+    
     
 }
