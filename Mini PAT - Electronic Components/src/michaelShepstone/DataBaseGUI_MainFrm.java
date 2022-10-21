@@ -6,12 +6,10 @@
 package michaelShepstone;
 
 import com.formdev.flatlaf.*;
-import java.awt.geom.FlatteningPathIterator;
-import java.time.LocalDate;
+
 import java.util.*;
-import javax.swing.JOptionPane;
+
 import javax.swing.*;
-import static javax.swing.UIManager.setLookAndFeel;
 
 
 /**
@@ -30,6 +28,8 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 
         db.connectDB();
 
+             scrFilters.setVisible(false);
+             
         Vector allComp = db.getAllComponents();
         ComponentsLst.setListData(db.getAllComponents());
 
@@ -57,7 +57,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         BtnAdd = new javax.swing.JButton();
         BtnView = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        tglFilter = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ComponentsLst = new javax.swing.JList<>();
         pnlDetails = new javax.swing.JPanel();
@@ -71,7 +71,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrFilters = new javax.swing.JScrollPane();
         pnlFilters = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -149,10 +149,10 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jToggleButton1.setText("Filter:");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        tglFilter.setText("Filter:");
+        tglFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                tglFilterActionPerformed(evt);
             }
         });
 
@@ -302,10 +302,8 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                                     .addComponent(jLabel10)
                                     .addGroup(pnlFiltersLayout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlFiltersLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
                                         .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel11)
                                             .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(0, 92, Short.MAX_VALUE)))
@@ -345,7 +343,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jScrollPane2.setViewportView(pnlFilters);
+        scrFilters.setViewportView(pnlFilters);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -358,8 +356,8 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlButtonPanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tglFilter)
+                    .addComponent(scrFilters, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -373,9 +371,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(pnlDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton1)
+                        .addComponent(tglFilter)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)))
+                        .addComponent(scrFilters, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
         );
 
@@ -397,14 +395,23 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ComponentsLstComponentMoved
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void tglFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglFilterActionPerformed
+if(!scrFilters.isShowing()){
+    scrFilters.setVisible(true);
+    
+}else{
+    scrFilters.setVisible(false);
+}
+
+
+
         // TODO add your handling code here:
       /*  if (!filtersPanel.isShowing()) {
             filtersPanel.setVisible(true);
         } else {
             filtersPanel.setVisible(false);
         }*/
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_tglFilterActionPerformed
 
     private void ComponentsLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ComponentsLstValueChanged
         //System.out.println("Changed");
@@ -419,6 +426,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 
             btnEdit.setEnabled(true);
             btnDelete.setEnabled(true);
+            
         }
     }//GEN-LAST:event_ComponentsLstValueChanged
 
@@ -438,7 +446,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 
         } else {
             new frmEditComponent((Component) ComponentsLst.getSelectedValue()).setVisible(true);
-
+                
             this.dispose();
 
         }
@@ -580,13 +588,11 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrice;
@@ -596,5 +602,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlButtonPanner;
     private javax.swing.JPanel pnlDetails;
     private javax.swing.JPanel pnlFilters;
+    private javax.swing.JScrollPane scrFilters;
+    private javax.swing.JToggleButton tglFilter;
     // End of variables declaration//GEN-END:variables
 }
