@@ -5,10 +5,13 @@
  */
 package michaelShepstone;
 
+import java.awt.geom.FlatteningPathIterator;
 import java.time.LocalDate;
 import java.util.*;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
+import javax.swing.*;
+
+
 /**
  *
  * @author mshep23
@@ -34,18 +37,15 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         btnDelete.setEnabled(false);
         btnEdit.setEnabled(false);
         
-          try {
-              
-         UIManager.setLookAndFeel("javax.swing.plaf.flatLaF.MetalLookAndFeel" );
-         
-         
-         
-      } catch (Exception e) { 
-              System.out.println("ExceptionL: " + e);
-   }
+        
+        for(int i = 0; i  <UIManager.getInstalledLookAndFeels().length; i++){
+            System.out.println(i +"/"+UIManager.getInstalledLookAndFeels().length);
+            
+            System.out.println(UIManager.getInstalledLookAndFeels()[i]);
+        
+        }
+    
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -383,9 +383,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+      try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("FlatLaf_Dark".equals(info.getName())) {
+                if ("Nimbus".equalsIgnoreCase(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -401,7 +401,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        //Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DataBaseGUI_MainFrm().setVisible(true);
