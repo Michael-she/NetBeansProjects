@@ -5,11 +5,13 @@
  */
 package michaelShepstone;
 
+import com.formdev.flatlaf.*;
 import java.awt.geom.FlatteningPathIterator;
 import java.time.LocalDate;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.*;
+import static javax.swing.UIManager.setLookAndFeel;
 
 
 /**
@@ -23,7 +25,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
      */
     public DataBaseGUI_MainFrm() {
         initComponents();
-
+ 
         DBmanager db = new DBmanager();
 
         db.connectDB();
@@ -37,14 +39,8 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         btnDelete.setEnabled(false);
         btnEdit.setEnabled(false);
         
+       
         
-        for(int i = 0; i  <UIManager.getInstalledLookAndFeels().length; i++){
-            System.out.println(i +"/"+UIManager.getInstalledLookAndFeels().length);
-            
-            System.out.println(UIManager.getInstalledLookAndFeels()[i]);
-        
-        }
-    
     }
 
     /**
@@ -75,6 +71,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ComponentsLst = new javax.swing.JList<>();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -177,18 +174,24 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(ComponentsLst);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Components, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(Components, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(filtersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -225,6 +228,12 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                             .addComponent(jToggleButton1))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BtnAdd, BtnView, btnDelete, btnEdit});
@@ -247,7 +256,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnEdit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDelete))
+                                .addComponent(btnDelete)
+                                .addGap(23, 23, 23)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(286, 286, 286)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -383,8 +394,8 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-      try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+      //try {
+          /*  for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equalsIgnoreCase(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
@@ -400,8 +411,49 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(DataBaseGUI_MainFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+      
+      */
+ UIManager.installLookAndFeel("FlatLaFDark", "com.formdev.flatlaf.FlatDarkLaf");
+        
+        
+        for(int i = 0; i  <UIManager.getInstalledLookAndFeels().length; i++){
+            System.out.println(i +"/"+UIManager.getInstalledLookAndFeels().length);
+            
+            System.out.println(UIManager.getInstalledLookAndFeels()[i].getName());
+        
+            
+            
+              
+            //  javax.swing.UIManager.LookAndFeelInfo info  javax.swing.UIManager.getInstalledLookAndFeels() 
+            try{
+            if("FlatLaFDark".equalsIgnoreCase(UIManager.getInstalledLookAndFeels()[i].getName())){
+              System.out.println(UIManager.getInstalledLookAndFeels()[i].getClassName());
+             FlatDarkLaf.setup();
+             
+          UIManager.setLookAndFeel(UIManager.getInstalledLookAndFeels()[i].getClassName());
+          
+         // javax.swing.UIManager.setLookAndFeel
+              System.out.println("Class Found");
+          
+            }
+          }catch( ClassNotFoundException e){
+              
+              System.out.println("Not Found");
+              
+          } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(DataBaseGUI_MainFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(DataBaseGUI_MainFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(DataBaseGUI_MainFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+            
+        }
         //Create and display the form */
+          //"com.formdev.flatlaf.intellijthemes.FlatDarkFlatIJTheme";
+          
+          // UIManager.installLookAndFeel("FlatLaFDark", com.formdev.flatlaf.intellijthemes.FlatDarkFlatIJTheme);
+         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DataBaseGUI_MainFrm().setVisible(true);
@@ -442,6 +494,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblName;
