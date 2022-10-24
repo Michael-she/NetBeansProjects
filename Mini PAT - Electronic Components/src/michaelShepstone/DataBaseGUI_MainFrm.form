@@ -33,12 +33,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnlDetails" min="-2" max="-2" attributes="0"/>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                   <Component id="pnlButtonPanner" min="-2" max="-2" attributes="0"/>
                   <Component id="tglFilter" min="-2" max="-2" attributes="0"/>
                   <Component id="scrFilters" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
 =======
+=======
+>>>>>>> Stashed changes
                   <Group type="102" attributes="0">
                       <Component id="pnlButtonPanner" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -57,6 +60,9 @@
                   <Component id="tglFilter" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="27" max="32767" attributes="0"/>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
           </Group>
       </Group>
@@ -109,6 +115,9 @@
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                   </Group>
               </Group>
@@ -427,6 +436,14 @@
                                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="spnQuantityMax" min="-2" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
+=======
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="spnPriceMax" min="-2" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                                               </Group>
                                               <Group type="102" attributes="0">
                                                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
@@ -440,6 +457,7 @@
                                       </Group>
                                       <Component id="tglFilterSMD" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                                   </Group>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -459,6 +477,8 @@
                                       </Group>
                                       <EmptySpace min="0" pref="92" max="32767" attributes="0"/>
                                   </Group>
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                               </Group>
