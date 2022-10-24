@@ -28,7 +28,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 
         db.connectDB();
 
-             scrFilters.setVisible(false);
+            pnlFiltersContainer.setVisible(false);
              
         Vector allComp = db.getAllComponents();
         ComponentsLst.setListData(db.getAllComponents());
@@ -38,9 +38,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 
         btnDelete.setEnabled(false);
         btnEdit.setEnabled(false);
-        
+         
        
-        
+       
     }
 
     /**
@@ -71,22 +71,25 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        pnlFiltersContainer = new javax.swing.JPanel();
         scrFilters = new javax.swing.JScrollPane();
         pnlFilters = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtFilterName = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
+        spnQuantityMin = new javax.swing.JSpinner();
+        spnQuantityMax = new javax.swing.JSpinner();
         jLabel8 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
+        spnPriceMin = new javax.swing.JSpinner();
+        spnPriceMax = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        tglFilterSMD = new javax.swing.JToggleButton();
         jLabel10 = new javax.swing.JLabel();
-        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        dpReleaseDateFirst = new com.github.lgooddatepicker.components.DatePicker();
         jLabel11 = new javax.swing.JLabel();
-        datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
+        dpFilterReleaseDateLate = new com.github.lgooddatepicker.components.DatePicker();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -130,7 +133,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                     .addComponent(BtnAdd)
                     .addComponent(btnEdit)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pnlButtonPannerLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BtnAdd, BtnView, btnDelete, btnEdit});
@@ -248,24 +251,44 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 
         jLabel6.setText("Name:");
 
-        jTextField1.setText("Default");
+        txtFilterName.setText("Default");
+        txtFilterName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFilterNameActionPerformed(evt);
+            }
+        });
+        txtFilterName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFilterNameKeyPressed(evt);
+            }
+        });
 
         jLabel7.setText("Quantity:");
+
+        spnQuantityMax.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnQuantityMaxStateChanged(evt);
+            }
+        });
 
         jLabel8.setText("Price:");
 
         jLabel9.setText("SMD:");
 
-        jToggleButton2.setText("True");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        tglFilterSMD.setText("True");
+        tglFilterSMD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                tglFilterSMDActionPerformed(evt);
             }
         });
 
         jLabel10.setText("Release Date:");
 
         jLabel11.setText("TO");
+
+        jLabel12.setText("TO");
+
+        jLabel13.setText("TO");
 
         javax.swing.GroupLayout pnlFiltersLayout = new javax.swing.GroupLayout(pnlFilters);
         pnlFilters.setLayout(pnlFiltersLayout);
@@ -275,39 +298,40 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFiltersLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(datePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addGroup(pnlFiltersLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tglFilterSMD, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dpReleaseDateFirst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFilterName, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnlFiltersLayout.createSequentialGroup()
+                                        .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(spnPriceMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(spnQuantityMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(pnlFiltersLayout.createSequentialGroup()
+                                                .addComponent(jLabel12)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(spnQuantityMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(pnlFiltersLayout.createSequentialGroup()
+                                                .addComponent(jLabel13)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(spnPriceMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addContainerGap(36, Short.MAX_VALUE))
                     .addGroup(pnlFiltersLayout.createSequentialGroup()
                         .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlFiltersLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlFiltersLayout.createSequentialGroup()
-                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlFiltersLayout.createSequentialGroup()
-                                        .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(pnlFiltersLayout.createSequentialGroup()
-                                .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10)
-                                    .addGroup(pnlFiltersLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel11)
-                                            .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 92, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                .addComponent(dpFilterReleaseDateLate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel11))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlFiltersLayout.setVerticalGroup(
             pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,79 +339,105 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtFilterName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnQuantityMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnQuantityMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnPriceMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnPriceMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton2)
+                .addComponent(tglFilterSMD)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dpReleaseDateFirst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(datePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(dpFilterReleaseDateLate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         scrFilters.setViewportView(pnlFilters);
+
+        javax.swing.GroupLayout pnlFiltersContainerLayout = new javax.swing.GroupLayout(pnlFiltersContainer);
+        pnlFiltersContainer.setLayout(pnlFiltersContainerLayout);
+        pnlFiltersContainerLayout.setHorizontalGroup(
+            pnlFiltersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFiltersContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrFilters, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlFiltersContainerLayout.setVerticalGroup(
+            pnlFiltersContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFiltersContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrFilters, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(tglFilter))
                     .addComponent(pnlDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlButtonPanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tglFilter)
-                    .addComponent(scrFilters, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlFiltersContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlButtonPanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tglFilter)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scrFilters, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)))
-                .addGap(18, 18, 18))
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlFiltersContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
 
     private void BtnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnViewActionPerformed
         DBmanager db = new DBmanager();
 
         db.connectDB();
-
+        
         db.displayAllComponents();
         ComponentsLst.setListData(db.getAllComponents());
+        
+       
         db.disconnectDB();
     }//GEN-LAST:event_BtnViewActionPerformed
 
@@ -396,11 +446,12 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_ComponentsLstComponentMoved
 
     private void tglFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglFilterActionPerformed
-if(!scrFilters.isShowing()){
-    scrFilters.setVisible(true);
-    
+if(!pnlFiltersContainer.isVisible()){
+    pnlFiltersContainer.setVisible(true);
+    System.out.println("TRUE");
+    pnlFiltersContainer.setVisible(true);
 }else{
-    scrFilters.setVisible(false);
+    pnlFiltersContainer.setVisible(false);
 }
 
 
@@ -484,9 +535,27 @@ if(!scrFilters.isShowing()){
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void tglFilterSMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglFilterSMDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_tglFilterSMDActionPerformed
+
+    private void txtFilterNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilterNameActionPerformed
+       
+    }//GEN-LAST:event_txtFilterNameActionPerformed
+
+    
+    
+    
+    Component searchComponent = new Component();
+    
+    
+    private void spnQuantityMaxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQuantityMaxStateChanged
+   searchComponent.setComponentQuantity(spnPriceMax.getValue());
+    }//GEN-LAST:event_spnQuantityMaxStateChanged
+
+    private void txtFilterNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterNameKeyPressed
+            searchComponent.setComponentName(txtFilterName.getText());
+    }//GEN-LAST:event_txtFilterNameKeyPressed
 
     /**
      * @param args the command line arguments
@@ -574,11 +643,13 @@ if(!scrFilters.isShowing()){
     private javax.swing.JList<Object> ComponentsLst;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
-    private com.github.lgooddatepicker.components.DatePicker datePicker1;
-    private com.github.lgooddatepicker.components.DatePicker datePicker2;
+    private com.github.lgooddatepicker.components.DatePicker dpFilterReleaseDateLate;
+    private com.github.lgooddatepicker.components.DatePicker dpReleaseDateFirst;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -588,12 +659,6 @@ if(!scrFilters.isShowing()){
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblQuantity;
@@ -602,7 +667,14 @@ if(!scrFilters.isShowing()){
     private javax.swing.JPanel pnlButtonPanner;
     private javax.swing.JPanel pnlDetails;
     private javax.swing.JPanel pnlFilters;
+    private javax.swing.JPanel pnlFiltersContainer;
     private javax.swing.JScrollPane scrFilters;
+    private javax.swing.JSpinner spnPriceMax;
+    private javax.swing.JSpinner spnPriceMin;
+    private javax.swing.JSpinner spnQuantityMax;
+    private javax.swing.JSpinner spnQuantityMin;
     private javax.swing.JToggleButton tglFilter;
+    private javax.swing.JToggleButton tglFilterSMD;
+    private javax.swing.JTextField txtFilterName;
     // End of variables declaration//GEN-END:variables
 }
