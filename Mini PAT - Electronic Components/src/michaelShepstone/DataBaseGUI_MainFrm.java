@@ -40,7 +40,10 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         btnEdit.setEnabled(false);
         
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
          btnFilter.setVisible(false);
        lblFilters.setVisible(false);
        lblFilters2.setVisible(false);
@@ -81,7 +84,10 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         lblName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         pnlFiltersContainer = new javax.swing.JPanel();
@@ -98,12 +104,15 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         jSpinner4 = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         jToggleButton2 = new javax.swing.JToggleButton();
         jLabel10 = new javax.swing.JLabel();
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         jLabel11 = new javax.swing.JLabel();
         datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
 =======
+=======
+>>>>>>> Stashed changes
         tglFilterSMD = new javax.swing.JToggleButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -112,6 +121,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         lblFilters = new javax.swing.JLabel();
         lblFilters2 = new javax.swing.JLabel();
         lblFilters3 = new javax.swing.JLabel();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -286,11 +298,14 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         jLabel6.setText("Name:");
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         jTextField1.setText("Default");
 
         jLabel7.setText("Quantity:");
 
 =======
+=======
+>>>>>>> Stashed changes
         txtFilterName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFilterNameActionPerformed(evt);
@@ -322,9 +337,12 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         jLabel9.setText("SMD:");
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         jToggleButton2.setText("True");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
 =======
+=======
+>>>>>>> Stashed changes
         tglFilterSMD.setText("NOT SELECTED");
         tglFilterSMD.addActionListener(new java.awt.event.ActionListener() {
 >>>>>>> Stashed changes
@@ -334,10 +352,13 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         });
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         jLabel10.setText("Release Date:");
 
         jLabel11.setText("TO");
 =======
+=======
+>>>>>>> Stashed changes
         jLabel12.setText("TO");
 
         jLabel13.setText("TO");
@@ -354,6 +375,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
+<<<<<<< Updated upstream
                     .addGroup(pnlFiltersLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
 <<<<<<< Updated upstream
@@ -399,6 +421,19 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(pnlFiltersLayout.createSequentialGroup()
+=======
+                    .addGroup(pnlFiltersLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFilterName, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlFiltersLayout.createSequentialGroup()
+                                .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(spnPriceMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spnQuantityMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(pnlFiltersLayout.createSequentialGroup()
+>>>>>>> Stashed changes
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(spnQuantityMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -408,6 +443,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                                         .addComponent(spnPriceMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(tglFilterSMD, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(36, Short.MAX_VALUE))
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         );
         pnlFiltersLayout.setVerticalGroup(
@@ -433,6 +471,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 .addComponent(jToggleButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
@@ -444,6 +483,8 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addComponent(datePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
 =======
+=======
+>>>>>>> Stashed changes
                 .addComponent(tglFilterSMD)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 >>>>>>> Stashed changes
@@ -494,6 +535,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 
         lblFilters3.setText("will be ignored");
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -506,11 +550,14 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     .addComponent(pnlButtonPanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tglFilter)
                     .addComponent(scrFilters, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 =======
+=======
+>>>>>>> Stashed changes
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlButtonPanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -525,6 +572,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                             .addComponent(lblFilters3)))
                     .addComponent(tglFilter))
                 .addGap(0, 27, Short.MAX_VALUE))
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         );
         layout.setVerticalGroup(
@@ -534,6 +584,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                         .addComponent(pnlButtonPanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -549,6 +600,13 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                             .addComponent(pnlStorage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pnlButtonPanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlStorage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> Stashed changes
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -566,6 +624,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnFilter)
                                 .addGap(26, 26, 26))))))
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         );
 
@@ -609,6 +670,9 @@ if(!pnlFiltersContainer.isVisible()){
        lblFilters.setVisible(false);
        lblFilters2.setVisible(false);
        lblFilters3.setVisible(false);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -694,10 +758,13 @@ if(!pnlFiltersContainer.isVisible()){
     }//GEN-LAST:event_btnDeleteActionPerformed
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 =======
+=======
+>>>>>>> Stashed changes
     String where = "";
     String sqlName = "";
     String sqlMaxQ = "";
@@ -752,6 +819,7 @@ if(!pnlFiltersContainer.isVisible()){
     String sqlMaxP = "";
     String sqlMinP = "";
     String sqlSMD = "";
+<<<<<<< Updated upstream
     
     
         if(!(txtFilterName.getText().isBlank())){
@@ -790,7 +858,95 @@ if(!pnlFiltersContainer.isVisible()){
         sqlMinP = "";
     }
    
+=======
+>>>>>>> Stashed changes
     
+    if((int)spnQuantityMax.getValue() != 0){
+          if(multipleFilters){
+            
+            sqlMaxQ = " AND ";
+        }
+        sqlMaxQ += " ComponentQuantity <= " + (int)spnQuantityMax.getValue();
+        multipleFilters = true;
+        
+    }else{
+        
+        sqlMaxQ = "";
+    }
+   
+    
+<<<<<<< Updated upstream
+    if((int)spnQuantityMin.getValue() != 0){
+          if(multipleFilters){
+            
+            sqlMinQ = " AND ";
+        }
+        sqlMinQ += " ComponentQuantity >= " + (int)spnQuantityMin.getValue();
+        multipleFilters = true;
+        
+    }else{
+        
+        sqlMinQ = "";
+    }
+   
+    if(!(tglFilterSMD.getText().equalsIgnoreCase("NOT SELECTED"))){
+        
+         if(multipleFilters){
+            
+            sqlSMD = " AND ";
+        }
+        if(tglFilterSMD.isSelected()){
+            sqlSMD += " SMD = TRUE";
+        }else{
+             sqlSMD += " SMD = FALSE";
+        }
+         multipleFilters = true;
+    }else{
+        
+        sqlSMD = "";
+    }
+   
+=======
+        if(!(txtFilterName.getText().isBlank())){
+        sqlName = " ComponentName LIKE '*"+txtFilterName.getText()+"*' ";
+   multipleFilters = true;
+>>>>>>> Stashed changes
+    
+    }else{
+        
+        sqlName = "";
+    }
+        
+        
+    if((int)spnPriceMax.getValue() != 0){
+        
+        if(multipleFilters){
+            
+            sqlMaxP = " AND ";
+        }
+        sqlMaxP += " ComponentPrice <= " + (int) spnPriceMax.getValue();
+        multipleFilters = true;
+    }else{
+        
+        sqlMaxP = "";
+    }
+   
+    if((int)spnPriceMin.getValue() != 0){
+        
+        if(multipleFilters){
+            
+            sqlMinP = " AND ";
+        }
+        sqlMinP += " ComponentPrice >= " + (int) spnPriceMin.getValue();
+        multipleFilters = true;
+    }else{
+        
+        sqlMinP = "";
+    }
+   
+    
+<<<<<<< Updated upstream
+=======
     if((int)spnQuantityMax.getValue() != 0){
           if(multipleFilters){
             
@@ -837,6 +993,7 @@ if(!pnlFiltersContainer.isVisible()){
    
     
     
+>>>>>>> Stashed changes
                 
                 if(multipleFilters){
                 
@@ -859,6 +1016,9 @@ if(!pnlFiltersContainer.isVisible()){
     private void spnQuantityMinStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQuantityMinStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_spnQuantityMinStateChanged
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
     /**
@@ -948,6 +1108,7 @@ if(!pnlFiltersContainer.isVisible()){
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private com.github.lgooddatepicker.components.DatePicker datePicker2;
     private javax.swing.JLabel jLabel1;
@@ -956,10 +1117,17 @@ if(!pnlFiltersContainer.isVisible()){
 =======
     private javax.swing.JButton btnFilter;
     private javax.swing.JLabel jLabel1;
+=======
+    private javax.swing.JButton btnFilter;
+    private javax.swing.JLabel jLabel1;
+>>>>>>> Stashed changes
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -971,12 +1139,18 @@ if(!pnlFiltersContainer.isVisible()){
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton2;
+=======
+    private javax.swing.JLabel lblFilters;
+    private javax.swing.JLabel lblFilters2;
+    private javax.swing.JLabel lblFilters3;
+>>>>>>> Stashed changes
 =======
     private javax.swing.JLabel lblFilters;
     private javax.swing.JLabel lblFilters2;
@@ -994,6 +1168,9 @@ if(!pnlFiltersContainer.isVisible()){
 =======
     private javax.swing.JPanel pnlFiltersContainer;
     private javax.swing.JPanel pnlStorage;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     private javax.swing.JScrollPane scrFilters;
     private javax.swing.JToggleButton tglFilter;
