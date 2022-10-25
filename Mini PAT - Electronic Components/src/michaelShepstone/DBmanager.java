@@ -246,6 +246,52 @@ public class DBmanager {
         return returnVector;
     }
     
+    public Vector getSearch(String sql){
+         Vector returnVector = new Vector();
+        try{
+        connectDB();
+       
+        Statement s = connection.createStatement();
+        
+       // String sql = "SELECT * FROM tblComponents";
+        
+        ResultSet results = s.executeQuery(sql);
+        
+        while(results.next()){
+            
+            int componentID = results.getInt("ComponentID");
+            
+            
+            String componentName = results.getString("ComponentName");
+            
+            
+            double componentPrice = results.getDouble("ComponentPrice");
+            
+            int componentQuantity = results.getInt("ComponentQuantity");
+            
+            boolean smd = results.getBoolean("SMD");
+            
+            LocalDate releaseDate = results.getDate("ReleaseDate").toLocalDate();
+            
+            
+           // System.out.println(componentID + " | "+componentName+" | " + componentPrice + " | Quantity = " + componentQuantity+" | SMD = " +smd + " Release Date: " + releaseDate);
+            
+            disconnectDB();
+            
+            Component c = new Component(componentID, componentName, componentPrice, componentQuantity, smd, releaseDate);
+            returnVector.add(c);
+        
+        }
+        
+        
+        disconnectDB();
+        }catch (SQLException e){
+            System.out.println("Error in dispayAllComponents Method");
+            
+        }
+        return returnVector;
+    }
+    
     
     public boolean addComponent(Component inComponent){
         try{

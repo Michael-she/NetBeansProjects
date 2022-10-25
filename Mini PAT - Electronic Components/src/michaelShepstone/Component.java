@@ -13,12 +13,9 @@ public class Component {
 
         private String componentName;
         private double componentPrice;
-        private double minComponentPrice = 0;
                 private int componentQuantity;
-                private int minComponentQuantity = 0;
                  private boolean SMD;
         private LocalDate releaseDate;
-         private LocalDate minReleaseDate;
         private int id;
     
       
@@ -27,8 +24,6 @@ public class Component {
         
 }
 
-    
-    
     public Component(String componentName, double componentPrice, int componentQuantity, boolean SMD, LocalDate releaseDate) {
         this.componentName = componentName;
         this.componentPrice = componentPrice;
@@ -98,18 +93,6 @@ public class Component {
 
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
-    }
-
-    public void setMinComponentPrice(double minComponentPrice) {
-        this.minComponentPrice = minComponentPrice;
-    }
-
-    public void setMinComponentQuantity(int minComponentQuantity) {
-        this.minComponentQuantity = minComponentQuantity;
-    }
-
-    public void setMinReleaseDate(LocalDate minReleaseDate) {
-        this.minReleaseDate = minReleaseDate;
     }
     
     

@@ -28,8 +28,11 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 
         db.connectDB();
 
-            pnlFiltersContainer.setVisible(false);
+             scrFilters.setVisible(false);
              
+       // Vector allComp = db.getAllComponents();
+        
+        
         Vector allComp = db.getAllComponents();
         ComponentsLst.setListData(db.getAllComponents());
 
@@ -38,9 +41,17 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 
         btnDelete.setEnabled(false);
         btnEdit.setEnabled(false);
-         
+        
+
+         btnFilter.setVisible(false);
+       lblFilters.setVisible(false);
+       lblFilters2.setVisible(false);
+       lblFilters3.setVisible(false);
        
        
+
+       
+        
     }
 
     /**
@@ -84,12 +95,12 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         spnPriceMax = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
         tglFilterSMD = new javax.swing.JToggleButton();
-        jLabel10 = new javax.swing.JLabel();
-        dpReleaseDateFirst = new com.github.lgooddatepicker.components.DatePicker();
-        jLabel11 = new javax.swing.JLabel();
-        dpFilterReleaseDateLate = new com.github.lgooddatepicker.components.DatePicker();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        btnFilter = new javax.swing.JButton();
+        lblFilters = new javax.swing.JLabel();
+        lblFilters2 = new javax.swing.JLabel();
+        lblFilters3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -251,7 +262,6 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 
         jLabel6.setText("Name:");
 
-        txtFilterName.setText("Default");
         txtFilterName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFilterNameActionPerformed(evt);
@@ -261,30 +271,67 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtFilterNameKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFilterNameKeyReleased(evt);
+            }
         });
 
         jLabel7.setText("Quantity:");
+
+        spnQuantityMin.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnQuantityMinStateChanged(evt);
+            }
+        });
+        spnQuantityMin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                spnQuantityMinKeyReleased(evt);
+            }
+        });
 
         spnQuantityMax.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 spnQuantityMaxStateChanged(evt);
             }
         });
+        spnQuantityMax.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                spnQuantityMaxKeyReleased(evt);
+            }
+        });
 
         jLabel8.setText("Price:");
 
+        spnPriceMin.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnPriceMinStateChanged(evt);
+            }
+        });
+        spnPriceMin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                spnPriceMinKeyReleased(evt);
+            }
+        });
+
+        spnPriceMax.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnPriceMaxStateChanged(evt);
+            }
+        });
+        spnPriceMax.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                spnPriceMaxKeyReleased(evt);
+            }
+        });
+
         jLabel9.setText("SMD:");
 
-        tglFilterSMD.setText("True");
+        tglFilterSMD.setText("NOT SELECTED");
         tglFilterSMD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tglFilterSMDActionPerformed(evt);
             }
         });
-
-        jLabel10.setText("Release Date:");
-
-        jLabel11.setText("TO");
 
         jLabel12.setText("TO");
 
@@ -297,41 +344,30 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
             .addGroup(pnlFiltersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
                     .addGroup(pnlFiltersLayout.createSequentialGroup()
-                        .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
+                        .addGap(6, 6, 6)
+                        .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFilterName, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlFiltersLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
+                                .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(spnPriceMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spnQuantityMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tglFilterSMD, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dpReleaseDateFirst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFilterName, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(pnlFiltersLayout.createSequentialGroup()
-                                        .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(spnPriceMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(spnQuantityMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(pnlFiltersLayout.createSequentialGroup()
-                                                .addComponent(jLabel12)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(spnQuantityMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(pnlFiltersLayout.createSequentialGroup()
-                                                .addComponent(jLabel13)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(spnPriceMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addContainerGap(36, Short.MAX_VALUE))
-                    .addGroup(pnlFiltersLayout.createSequentialGroup()
-                        .addGroup(pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlFiltersLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(dpFilterReleaseDateLate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel11))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addComponent(spnQuantityMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnlFiltersLayout.createSequentialGroup()
+                                        .addComponent(jLabel13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(spnPriceMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tglFilterSMD, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         pnlFiltersLayout.setVerticalGroup(
             pnlFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,14 +394,6 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tglFilterSMD)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dpReleaseDateFirst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dpFilterReleaseDateLate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -388,6 +416,19 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnFilter.setText("Update Filters");
+        btnFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFilterActionPerformed(evt);
+            }
+        });
+
+        lblFilters.setText("Values left blank");
+
+        lblFilters2.setText("or set to 0");
+
+        lblFilters3.setText("will be ignored");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -402,8 +443,15 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                         .addComponent(tglFilter))
                     .addComponent(pnlDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlButtonPanner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlFiltersContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 24, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlFiltersContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnFilter)
+                            .addComponent(lblFilters)
+                            .addComponent(lblFilters2)
+                            .addComponent(lblFilters3))))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,25 +467,34 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
                         .addComponent(pnlDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tglFilter)
-                        .addGap(18, 18, 18)
-                        .addComponent(pnlFiltersContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(pnlFiltersContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblFilters)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblFilters2)
+                                .addGap(5, 5, 5)
+                                .addComponent(lblFilters3)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnFilter)
+                                .addGap(17, 17, 17))))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
 
     private void BtnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnViewActionPerformed
         DBmanager db = new DBmanager();
 
         db.connectDB();
-        
+
         db.displayAllComponents();
         ComponentsLst.setListData(db.getAllComponents());
-        
-       
         db.disconnectDB();
     }//GEN-LAST:event_BtnViewActionPerformed
 
@@ -446,12 +503,27 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_ComponentsLstComponentMoved
 
     private void tglFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglFilterActionPerformed
-if(!pnlFiltersContainer.isVisible()){
+
+
+if(tglFilter.isSelected()){
+    
+    //System.out.println("FILTER SHOWING");
+    scrFilters.setVisible(true);
     pnlFiltersContainer.setVisible(true);
-    System.out.println("TRUE");
+    ////System.out.println("TRUE");
     pnlFiltersContainer.setVisible(true);
+   // btnFilter.setVisible(true);
+       lblFilters.setVisible(true);
+       lblFilters2.setVisible(true);
+       lblFilters3.setVisible(true);
 }else{
+    //System.out.println("FILTER NOT SHOWING");
     pnlFiltersContainer.setVisible(false);
+    btnFilter.setVisible(false);
+       lblFilters.setVisible(false);
+       lblFilters2.setVisible(false);
+       lblFilters3.setVisible(false);
+
 }
 
 
@@ -465,9 +537,9 @@ if(!pnlFiltersContainer.isVisible()){
     }//GEN-LAST:event_tglFilterActionPerformed
 
     private void ComponentsLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ComponentsLstValueChanged
-        //System.out.println("Changed");
+        ////System.out.println("Changed");
 
-//         System.out.println(((Component)ComponentsLst.getSelectedValue()).getComponentPrice());
+//         //System.out.println(((Component)ComponentsLst.getSelectedValue()).getComponentPrice());
         if (ComponentsLst.getSelectedIndex() != -1) {
             lblName.setText(((Component) ComponentsLst.getSelectedValue()).getComponentName());
             lblPrice.setText("" + ((Component) ComponentsLst.getSelectedValue()).getComponentPrice());
@@ -493,7 +565,7 @@ if(!pnlFiltersContainer.isVisible()){
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         if (ComponentsLst.getSelectedIndex() == -1) {
 
-            System.out.println("Nothing is selected");
+            //System.out.println("Nothing is selected");
 
         } else {
             new frmEditComponent((Component) ComponentsLst.getSelectedValue()).setVisible(true);
@@ -509,7 +581,7 @@ if(!pnlFiltersContainer.isVisible()){
 
         if (ComponentsLst.getSelectedIndex() == -1) {
 
-            System.out.println("Nothing is selected");
+            //System.out.println("Nothing is selected");
 
         } else {
             //   ).setVisible(true);
@@ -518,15 +590,15 @@ if(!pnlFiltersContainer.isVisible()){
 //Window to ask if the object is to be deleted, 0 is yes, 1 is no
             int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete \"" + selected.getComponentName() + "\"?\nThis action is very permanent and cannot be undone.", "DELETE", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
-            System.out.println(option);
+            //System.out.println(option);
 
             //logic connected to previous lines
             if (option == 0) {
 
                 DBmanager db = new DBmanager();
-                System.out.println("Deleting component");
+                //System.out.println("Deleting component");
                 db.deleateComponent(selected);
-                System.out.println("About to refresh");
+                //System.out.println("About to refresh");
                 refresh();
             }
 
@@ -535,27 +607,396 @@ if(!pnlFiltersContainer.isVisible()){
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void tglFilterSMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglFilterSMDActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+
+    String where = "";
+    String sqlName = "";
+    String sqlMaxQ = "";
+    String sqlMinQ = "";
+    String sqlMaxP = "";
+    String sqlMinP = "";
+    String sqlSMD = "";
+    
+    
+            
+         
+    
+    private void tglFilterSMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglFilterSMDActionPerformed
+        if(tglFilterSMD.isSelected()){
+            tglFilterSMD.setText("TRUE");
+            
+            
+            
+            
+            
+        }else{
+            
+            tglFilterSMD.setText("FALSE");
+            
+        }
+        updateFilterResult();
+       
     }//GEN-LAST:event_tglFilterSMDActionPerformed
 
     private void txtFilterNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilterNameActionPerformed
-       
+updateFilterResult();
     }//GEN-LAST:event_txtFilterNameActionPerformed
 
-    
-    
-    
-    Component searchComponent = new Component();
-    
-    
     private void spnQuantityMaxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQuantityMaxStateChanged
-   searchComponent.setComponentQuantity(spnPriceMax.getValue());
+  updateFilterResult();
     }//GEN-LAST:event_spnQuantityMaxStateChanged
 
     private void txtFilterNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterNameKeyPressed
-            searchComponent.setComponentName(txtFilterName.getText());
+    updateFilterResult();
     }//GEN-LAST:event_txtFilterNameKeyPressed
+
+    
+    void updateFilterResult(){
+        
+        
+         boolean multipleFilters = false;
+         String where = "";
+    String sqlName = "";
+    String sqlMaxQ = "";
+    String sqlMinQ = "";
+    String sqlMaxP = "";
+    String sqlMinP = "";
+    String sqlSMD = "";
+
+  //System.out.println("Multiple Filters: " + multipleFilters);
+  //System.out.println("SQL MAX QUANTITY: "+sqlMaxQ);
+  
+  
+      
+
+        if(!(txtFilterName.getText().isBlank())){
+        sqlName = " ComponentName LIKE '*"+txtFilterName.getText()+"*' ";
+   multipleFilters = true;
+    
+    }else{
+        
+        sqlName = "";
+    }
+        
+        
+    if((int)spnPriceMax.getValue() != 0){
+        
+        if(multipleFilters){
+            
+            sqlMaxP = " AND ";
+        }
+        sqlMaxP += " ComponentPrice <= " + (int) spnPriceMax.getValue();
+        multipleFilters = true;
+    }else{
+        
+        sqlMaxP = "";
+    }
+   
+    if((int)spnPriceMin.getValue() != 0){
+        
+        if(multipleFilters){
+            
+            sqlMinP = " AND ";
+        }
+        sqlMinP += " ComponentPrice >= " + (int) spnPriceMin.getValue();
+        multipleFilters = true;
+    }else{
+        
+        sqlMinP = "";
+    }
+   
+    
+
+
+    if((int)spnQuantityMax.getValue() != 0){
+        //System.out.println(sqlMaxQ);
+        //System.out.println(multipleFilters);
+          if(multipleFilters){
+            
+            sqlMaxQ = " AND ";
+        }
+        sqlMaxQ += " ComponentQuantity <= " + (int)spnQuantityMax.getValue();
+        multipleFilters = true;
+        //System.out.println(sqlMaxQ);
+    }else{
+        
+        sqlMaxQ = "";
+    }
+   
+    
+    if((int)spnQuantityMin.getValue() != 0){
+          if(multipleFilters){
+            
+            sqlMinQ = " AND ";
+        }
+        sqlMinQ += " ComponentQuantity >= " + (int)spnQuantityMin.getValue();
+        multipleFilters = true;
+        
+    }else{
+        
+        sqlMinQ = "";
+    }
+   
+    if(!(tglFilterSMD.getText().equalsIgnoreCase("NOT SELECTED"))){
+        
+         if(multipleFilters){
+            
+            sqlSMD = " AND ";
+        }
+        if(tglFilterSMD.isSelected()){
+            sqlSMD += " SMD = TRUE";
+        }else{
+             sqlSMD += " SMD = FALSE";
+        }
+         multipleFilters = true;
+    }else{
+        
+        sqlSMD = "";
+    }
+   
+    
+          //System.out.println("Multiple Filters" + multipleFilters);
+                
+                if(multipleFilters){
+                
+                String SQLFinal = "SELECT * FROM tblComponents WHERE " + where +sqlName+sqlMaxQ+sqlMinQ+sqlMaxP+sqlMinP+sqlSMD;
+                //System.out.println(SQLFinal);
+                
+                 DBmanager db = new DBmanager();
+
+        db.connectDB();
+        
+       
+        ComponentsLst.setListData(db.getSearch(SQLFinal));
+        
+       
+        db.disconnectDB();
+                
+                }
+    }
+    private void spnQuantityMinStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQuantityMinStateChanged
+       updateFilterResult();   // TODO add your handling code here:
+    }//GEN-LAST:event_spnQuantityMinStateChanged
+
+    private void txtFilterNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterNameKeyReleased
+        updateFilterResult();
+    }//GEN-LAST:event_txtFilterNameKeyReleased
+
+    private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
+        updateFilterResult();
+
+        boolean multipleFilters = false;
+        String where = "";
+        String sqlName = "";
+        String sqlMaxQ = "";
+        String sqlMinQ = "";
+        String sqlMaxP = "";
+        String sqlMinP = "";
+        String sqlSMD = "";
+
+        if(!(txtFilterName.getText().isBlank())){
+            sqlName = " ComponentName LIKE '*"+txtFilterName.getText()+"*' ";
+            multipleFilters = true;
+
+        }else{
+
+            sqlName = "";
+        }
+
+        if((int)spnPriceMax.getValue() != 0){
+
+            if(multipleFilters){
+
+                sqlMaxP = " AND ";
+            }
+            sqlMaxP += " ComponentPrice <= " + (int) spnPriceMax.getValue();
+            multipleFilters = true;
+        }else{
+
+            sqlMaxP = "";
+        }
+
+        if((int)spnPriceMin.getValue() != 0){
+
+            if(multipleFilters){
+
+                sqlMinP = " AND ";
+            }
+            sqlMinP += " ComponentPrice >= " + (int) spnPriceMin.getValue();
+            multipleFilters = true;
+        }else{
+
+            sqlMinP = "";
+        }
+
+        if((int)spnQuantityMax.getValue() != 0){
+            if(multipleFilters){
+
+                sqlMaxQ = " AND ";
+            }
+            sqlMaxQ += " ComponentQuantity <= " + (int)spnQuantityMax.getValue();
+            multipleFilters = true;
+
+        }else{
+
+            sqlMaxQ = "";
+        }
+
+        if((int)spnQuantityMin.getValue() != 0){
+            if(multipleFilters){
+
+                sqlMinQ = " AND ";
+            }
+            sqlMinQ += " ComponentQuantity >= " + (int)spnQuantityMin.getValue();
+            multipleFilters = true;
+
+        }else{
+
+            sqlMinQ = "";
+        }
+
+        if(!(tglFilterSMD.getText().equalsIgnoreCase("NOT SELECTED"))){
+
+            if(multipleFilters){
+
+                sqlSMD = " AND ";
+            }
+            if(tglFilterSMD.isSelected()){
+                sqlSMD += " SMD = TRUE";
+            }else{
+                sqlSMD += " SMD = FALSE";
+            }
+            multipleFilters = true;
+        }else{
+
+            sqlSMD = "";
+        }
+
+        if(!(txtFilterName.getText().isBlank())){
+            sqlName = " ComponentName LIKE '*"+txtFilterName.getText()+"*' ";
+            multipleFilters = true;
+
+        }else{
+
+            sqlName = "";
+        }
+
+        if((int)spnPriceMax.getValue() != 0){
+
+            if(multipleFilters){
+
+                sqlMaxP = " AND ";
+            }
+            sqlMaxP += " ComponentPrice <= " + (int) spnPriceMax.getValue();
+            multipleFilters = true;
+        }else{
+
+            sqlMaxP = "";
+        }
+
+        if((int)spnPriceMin.getValue() != 0){
+
+            if(multipleFilters){
+
+                sqlMinP = " AND ";
+            }
+            sqlMinP += " ComponentPrice >= " + (int) spnPriceMin.getValue();
+            multipleFilters = true;
+        }else{
+
+            sqlMinP = "";
+        }
+
+        if((int)spnQuantityMax.getValue() != 0){
+            if(multipleFilters){
+
+                sqlMaxQ = " AND ";
+            }
+            sqlMaxQ += " ComponentQuantity <= " + (int)spnQuantityMax.getValue();
+            multipleFilters = true;
+
+        }else{
+
+            sqlMaxQ = "";
+        }
+
+        if((int)spnQuantityMin.getValue() != 0){
+            if(multipleFilters){
+
+                sqlMinQ = " AND ";
+            }
+            sqlMinQ += " ComponentQuantity >= " + (int)spnQuantityMin.getValue();
+            multipleFilters = true;
+
+        }else{
+
+            sqlMinQ = "";
+        }
+
+        if(!(tglFilterSMD.getText().equalsIgnoreCase("NOT SELECTED"))){
+
+            if(multipleFilters){
+
+                sqlSMD = " AND ";
+            }
+            if(tglFilterSMD.isSelected()){
+                sqlSMD += " SMD = TRUE";
+            }else{
+                sqlSMD += " SMD = FALSE";
+            }
+            multipleFilters = true;
+        }else{
+
+            sqlSMD = "";
+        }
+
+        //System.out.println(multipleFilters);
+
+        if(multipleFilters){
+
+            String SQLFinal = "SELECT * FROM tblComponents WHERE " + where +sqlName+sqlMaxQ+sqlMinQ+sqlMaxP+sqlMinP+sqlSMD;
+            //System.out.println(SQLFinal);
+
+            DBmanager db = new DBmanager();
+
+            db.connectDB();
+
+            ComponentsLst.setListData(db.getSearch(SQLFinal));
+
+            db.disconnectDB();
+
+        }
+    }//GEN-LAST:event_btnFilterActionPerformed
+
+    private void spnPriceMinStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnPriceMinStateChanged
+updateFilterResult();        // TODO add your handling code here:
+    }//GEN-LAST:event_spnPriceMinStateChanged
+
+    private void spnPriceMaxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnPriceMaxStateChanged
+updateFilterResult();        // TODO add your handling code here:
+    }//GEN-LAST:event_spnPriceMaxStateChanged
+
+    private void spnQuantityMinKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spnQuantityMinKeyReleased
+updateFilterResult();        // TODO add your handling code here:
+    }//GEN-LAST:event_spnQuantityMinKeyReleased
+
+    private void spnQuantityMaxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spnQuantityMaxKeyReleased
+updateFilterResult();         // TODO add your handling code here:
+    }//GEN-LAST:event_spnQuantityMaxKeyReleased
+
+    private void spnPriceMinKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spnPriceMinKeyReleased
+updateFilterResult();         // TODO add your handling code here:
+    }//GEN-LAST:event_spnPriceMinKeyReleased
+
+    private void spnPriceMaxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spnPriceMaxKeyReleased
+updateFilterResult();         // TODO add your handling code here:
+    }//GEN-LAST:event_spnPriceMaxKeyReleased
+
+
 
     /**
      * @param args the command line arguments
@@ -570,9 +1011,9 @@ if(!pnlFiltersContainer.isVisible()){
         
         
         for(int i = 0; i  <UIManager.getInstalledLookAndFeels().length; i++){
-            System.out.println(i +"/"+UIManager.getInstalledLookAndFeels().length);
+            //System.out.println(i +"/"+UIManager.getInstalledLookAndFeels().length);
             
-            System.out.println(UIManager.getInstalledLookAndFeels()[i].getName());
+            //System.out.println(UIManager.getInstalledLookAndFeels()[i].getName());
         
             
             
@@ -580,18 +1021,18 @@ if(!pnlFiltersContainer.isVisible()){
             //  javax.swing.UIManager.LookAndFeelInfo info  javax.swing.UIManager.getInstalledLookAndFeels() 
             try{
             if("FlatLaFDark".equalsIgnoreCase(UIManager.getInstalledLookAndFeels()[i].getName())){
-              System.out.println(UIManager.getInstalledLookAndFeels()[i].getClassName());
+              //System.out.println(UIManager.getInstalledLookAndFeels()[i].getClassName());
              FlatDarkLaf.setup();
              
           UIManager.setLookAndFeel(UIManager.getInstalledLookAndFeels()[i].getClassName());
           
          // javax.swing.UIManager.setLookAndFeel
-              System.out.println("Class Found");
+              //System.out.println("Class Found");
           
             }
           }catch( ClassNotFoundException e){
               
-              System.out.println("Not Found");
+              //System.out.println("Not Found");
               
           } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(DataBaseGUI_MainFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -623,18 +1064,18 @@ if(!pnlFiltersContainer.isVisible()){
         DBmanager db = new DBmanager();
 
         db.connectDB();
-        System.out.println("REFRESHED 1 / 3");
+        //System.out.println("REFRESHED 1 / 3");
 
         ComponentsLst.setListData(db.getAllComponents());
 
         db.disconnectDB();
 
-        System.out.println("REFRESHED  2 / 3");
+        //System.out.println("REFRESHED  2 / 3");
        // filtersPanel.setVisible(false);
 
         btnDelete.setEnabled(false);
         btnEdit.setEnabled(false);
-        System.out.println("REFRESHED 3 / 3");
+        //System.out.println("REFRESHED 3 / 3");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -643,11 +1084,8 @@ if(!pnlFiltersContainer.isVisible()){
     private javax.swing.JList<Object> ComponentsLst;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
-    private com.github.lgooddatepicker.components.DatePicker dpFilterReleaseDateLate;
-    private com.github.lgooddatepicker.components.DatePicker dpReleaseDateFirst;
+    private javax.swing.JButton btnFilter;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -659,6 +1097,9 @@ if(!pnlFiltersContainer.isVisible()){
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblFilters;
+    private javax.swing.JLabel lblFilters2;
+    private javax.swing.JLabel lblFilters3;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblQuantity;
