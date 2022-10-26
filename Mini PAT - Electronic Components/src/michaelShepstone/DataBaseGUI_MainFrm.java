@@ -106,6 +106,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
 
         btnDelete.setText("Delete");
+        btnDelete.setToolTipText("Delete a component");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -113,6 +114,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         });
 
         btnEdit.setText("Edit");
+        btnEdit.setToolTipText("Edit a new Component\n");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -120,6 +122,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         });
 
         BtnAdd.setText("Add");
+        BtnAdd.setToolTipText("Add a new component\n");
         BtnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAddActionPerformed(evt);
@@ -127,6 +130,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         });
 
         BtnView.setText("Refresh");
+        BtnView.setToolTipText("Refresh the list");
         BtnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnViewActionPerformed(evt);
@@ -164,6 +168,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         );
 
         tglFilter.setText("Filter:");
+        tglFilter.setToolTipText("Display the filter menu\n");
         tglFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tglFilterActionPerformed(evt);
@@ -273,6 +278,9 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtFilterNameKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFilterNameKeyTyped(evt);
             }
         });
 
@@ -764,7 +772,7 @@ updateFilterResult();
                 if(multipleFilters){
                 
                 String SQLFinal = "SELECT * FROM tblComponents WHERE " + where +sqlName+sqlMaxQ+sqlMinQ+sqlMaxP+sqlMinP+sqlSMD;
-                //System.out.println(SQLFinal);
+                System.out.println(SQLFinal);
                 
                  DBmanager db = new DBmanager();
 
@@ -959,7 +967,7 @@ updateFilterResult();
         if(multipleFilters){
 
             String SQLFinal = "SELECT * FROM tblComponents WHERE " + where +sqlName+sqlMaxQ+sqlMinQ+sqlMaxP+sqlMinP+sqlSMD;
-            //System.out.println(SQLFinal);
+            System.out.println(SQLFinal);
 
             DBmanager db = new DBmanager();
 
@@ -995,6 +1003,10 @@ updateFilterResult();         // TODO add your handling code here:
     private void spnPriceMaxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spnPriceMaxKeyReleased
 updateFilterResult();         // TODO add your handling code here:
     }//GEN-LAST:event_spnPriceMaxKeyReleased
+
+    private void txtFilterNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterNameKeyTyped
+updateFilterResult();        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFilterNameKeyTyped
 
 
 

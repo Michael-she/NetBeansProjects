@@ -7,7 +7,9 @@ package michaelShepstone;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.*;
 
 /**
  *
@@ -187,16 +189,17 @@ public class frmAddComponent extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(lblNameError)
-                        .addGap(83, 83, 83)
-                        .addComponent(lblDateError))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblDateError)
+                        .addGap(14, 14, 14)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit)
                     .addComponent(lblGeneralError))
@@ -225,12 +228,17 @@ public class frmAddComponent extends javax.swing.JFrame {
         
         //logic to ensure that all the fields required for the database are working
         if(db.addComponent(returnComponent) && !componentName.isBlank()){
+       
+            if( JOptionPane.showConfirmDialog(null, "Would you like to add the following component?\nNAME: "+returnComponent.getComponentName()+"\nQUANTITY: "+returnComponent.getComponentQuantity()+"\nPRICE: "+returnComponent.getComponentPrice()+"\nSMD: "+returnComponent.isSMD()+"\nRELEASE DATE: "+returnComponent.getReleaseDate(), "ADD COMPONENT?", JOptionPane.YES_NO_OPTION)==0){
+                new DataBaseGUI_MainFrm().setVisible(true);
         
-        new DataBaseGUI_MainFrm().setVisible(true);
+        this.dispose();
+                
+                
+            }
+        }
         
-        this.dispose();}
-        
-        else{
+        else if(!db.addComponent(returnComponent)){
             lblGeneralError.setVisible(true);
         if(componentName.isBlank()){
             lblNameError.setVisible(true);
