@@ -22,6 +22,8 @@ public class frmAddComponent extends javax.swing.JFrame {
      */
     public frmAddComponent() {
         initComponents();
+        
+        //Hides the error messages from the user
         lblGeneralError.setVisible(false);
         lblDateError.setVisible(false);
         lblNameError.setVisible(false);
@@ -147,6 +149,7 @@ public class frmAddComponent extends javax.swing.JFrame {
         );
 
         btnSubmit.setText("Submit");
+        btnSubmit.setToolTipText("Add the component to the databse");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
@@ -210,13 +213,17 @@ public class frmAddComponent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+//if the submit button is pressed, this code runs
 
+//Updates the necessary variables
         String componentName = txtcomponentName.getText();
         int componentQuantity = (int) spnQuantity.getValue();
         double componentPrice = (double) spnPrice.getValue();
         boolean SMD = tglSMD.isSelected();
         LocalDate releaseDate = dpReleaseDate.getDate();
         
+        
+        //create  a new component to send to the DB manager 
         Component returnComponent = new Component(componentName, componentPrice, componentQuantity, SMD, releaseDate);
 
         DBmanager db = new DBmanager();
@@ -281,9 +288,9 @@ public class frmAddComponent extends javax.swing.JFrame {
         
         
         for(int i = 0; i  <UIManager.getInstalledLookAndFeels().length; i++){
-            System.out.println(i +"/"+UIManager.getInstalledLookAndFeels().length);
+                //System.out.println(i +"/"+UIManager.getInstalledLookAndFeels().length);
             
-            System.out.println(UIManager.getInstalledLookAndFeels()[i].getName());
+                //System.out.println(UIManager.getInstalledLookAndFeels()[i].getName());
         
             
             
@@ -291,18 +298,18 @@ public class frmAddComponent extends javax.swing.JFrame {
             //  javax.swing.UIManager.LookAndFeelInfo info  javax.swing.UIManager.getInstalledLookAndFeels() 
             try{
             if("FlatLaFDark".equalsIgnoreCase(UIManager.getInstalledLookAndFeels()[i].getName())){
-              System.out.println(UIManager.getInstalledLookAndFeels()[i].getClassName());
+                //System.out.println(UIManager.getInstalledLookAndFeels()[i].getClassName());
              FlatDarkLaf.setup();
              
           UIManager.setLookAndFeel(UIManager.getInstalledLookAndFeels()[i].getClassName());
           
          // javax.swing.UIManager.setLookAndFeel
-              System.out.println("Class Found");
+                //System.out.println("Class Found");
           
             }
           }catch( ClassNotFoundException e){
               
-              System.out.println("Not Found");
+                //System.out.println("Not Found");
               
           } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(DataBaseGUI_MainFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

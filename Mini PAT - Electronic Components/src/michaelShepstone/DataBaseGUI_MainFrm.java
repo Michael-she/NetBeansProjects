@@ -23,7 +23,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
      */
     public DataBaseGUI_MainFrm() {
         initComponents();
- 
+ //initialise Database
         DBmanager db = new DBmanager();
 
         db.connectDB();
@@ -32,13 +32,15 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
              
        // Vector allComp = db.getAllComponents();
         
-        
+        //get all the components and send them to the list
         Vector allComp = db.getAllComponents();
         ComponentsLst.setListData(db.getAllComponents());
 
         db.disconnectDB();
         //filtersPanel.setVisible(false);
 
+        
+        //Hide certain controls from the user
         btnDelete.setEnabled(false);
         btnEdit.setEnabled(false);
         
@@ -114,7 +116,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         });
 
         btnEdit.setText("Edit");
-        btnEdit.setToolTipText("Edit a new Component\n");
+        btnEdit.setToolTipText("Edit a Component ");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -495,15 +497,27 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+//if the refresh button is pressed, this code is run
     private void BtnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnViewActionPerformed
         DBmanager db = new DBmanager();
 
         db.connectDB();
 
         db.displayAllComponents();
+        
+        //Get all teh components from the database and put them in the list
         ComponentsLst.setListData(db.getAllComponents());
         db.disconnectDB();
+        //reset the filters
+        tglFilterSMD.setText("NOT SELECTED");
+        spnPriceMax.setValue(0);
+        spnPriceMin.setValue(0);
+        spnQuantityMax.setValue(0);
+        spnQuantityMin.setValue(0);
+        txtFilterName.setText("");
+        
+        
+        
     }//GEN-LAST:event_BtnViewActionPerformed
 
     private void ComponentsLstComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_ComponentsLstComponentMoved
@@ -512,7 +526,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
 
     private void tglFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglFilterActionPerformed
 
-
+//display the filter menu if the button is selected
 if(tglFilter.isSelected()){
     
     //System.out.println("FILTER SHOWING");
@@ -524,13 +538,21 @@ if(tglFilter.isSelected()){
        lblFilters.setVisible(true);
        lblFilters2.setVisible(true);
        lblFilters3.setVisible(true);
-}else{
+}else{//hide the filter menu
     //System.out.println("FILTER NOT SHOWING");
     pnlFiltersContainer.setVisible(false);
     btnFilter.setVisible(false);
        lblFilters.setVisible(false);
        lblFilters2.setVisible(false);
        lblFilters3.setVisible(false);
+       
+       //reset the filters
+       tglFilterSMD.setText("NOT SELECTED");
+        spnPriceMax.setValue(0);
+        spnPriceMin.setValue(0);
+        spnQuantityMax.setValue(0);
+        spnQuantityMin.setValue(0);
+        txtFilterName.setText("");
 
 }
 
@@ -546,7 +568,7 @@ if(tglFilter.isSelected()){
 
     private void ComponentsLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ComponentsLstValueChanged
         ////System.out.println("Changed");
-
+//Update the Component details based on 
 //         //System.out.println(((Component)ComponentsLst.getSelectedValue()).getComponentPrice());
         if (ComponentsLst.getSelectedIndex() != -1) {
             lblName.setText(((Component) ComponentsLst.getSelectedValue()).getComponentName());
@@ -571,6 +593,9 @@ if(tglFilter.isSelected()){
     }//GEN-LAST:event_BtnAddActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+   //if the "Edit" button is presesd, open the edit menu and close the current page
+        
+        //ensures that an item on the list is indeed selected before trying to call it's object
         if (ComponentsLst.getSelectedIndex() == -1) {
 
             //System.out.println("Nothing is selected");
@@ -586,13 +611,17 @@ if(tglFilter.isSelected()){
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+//delets the selected component when the "Delete" button is pressed.
 
+//ensures that a component i sselected before trying to delete one 
         if (ComponentsLst.getSelectedIndex() == -1) {
 
             //System.out.println("Nothing is selected");
 
         } else {
             //   ).setVisible(true);
+            
+            //Deletes the component
             Component selected = (Component) ComponentsLst.getSelectedValue();
 
 //Window to ask if the object is to be deleted, 0 is yes, 1 is no
@@ -620,7 +649,7 @@ if(tglFilter.isSelected()){
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-
+//variables for SQL code generation used for filtering
     String where = "";
     String sqlName = "";
     String sqlMaxQ = "";
@@ -634,6 +663,8 @@ if(tglFilter.isSelected()){
          
     
     private void tglFilterSMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglFilterSMDActionPerformed
+     
+        //if the filter by SMD butten is clicked, change the text, and update the filter reaults in the list
         if(tglFilterSMD.isSelected()){
             tglFilterSMD.setText("TRUE");
             
@@ -651,21 +682,28 @@ if(tglFilter.isSelected()){
     }//GEN-LAST:event_tglFilterSMDActionPerformed
 
     private void txtFilterNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilterNameActionPerformed
-updateFilterResult();
+//if this action is perfromed, the filtered list is update, this is done so that the user does not have to press a button to update their filter list.
+        
+        updateFilterResult();
     }//GEN-LAST:event_txtFilterNameActionPerformed
 
     private void spnQuantityMaxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQuantityMaxStateChanged
-  updateFilterResult();
+  //if this action is perfromed, the filtered list is update, this is done so that the user does not have to press a button to update their filter list.
+        
+        updateFilterResult();
     }//GEN-LAST:event_spnQuantityMaxStateChanged
 
     private void txtFilterNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterNameKeyPressed
-    updateFilterResult();
+   //if this action is perfromed, the filtered list is update, this is done so that the user does not have to press a button to update their filter list.
+        updateFilterResult();
     }//GEN-LAST:event_txtFilterNameKeyPressed
 
     
     void updateFilterResult(){
+        //Method to update the SQL and filter list. In all the below methods, if the value is 0, null, blank or whitespace, it will reset the SQL
         
         
+        //necessary variables
          boolean multipleFilters = false;
          String where = "";
     String sqlName = "";
@@ -680,17 +718,18 @@ updateFilterResult();
   
   
       
-
+//Updates the name filtering
         if(!(txtFilterName.getText().isBlank())){
         sqlName = " ComponentName LIKE '*"+txtFilterName.getText()+"*' ";
    multipleFilters = true;
     
     }else{
-        
+        multipleFilters = true;
         sqlName = "";
+          sqlName = " ComponentName LIKE '**' ";
     }
         
-        
+        //updates the maximum value filtering
     if((int)spnPriceMax.getValue() != 0){
         
         if(multipleFilters){
@@ -704,6 +743,8 @@ updateFilterResult();
         sqlMaxP = "";
     }
    
+    
+    //updates the mimum price filering
     if((int)spnPriceMin.getValue() != 0){
         
         if(multipleFilters){
@@ -719,7 +760,7 @@ updateFilterResult();
    
     
 
-
+//updates the maximum quantity filtering
     if((int)spnQuantityMax.getValue() != 0){
         //System.out.println(sqlMaxQ);
         //System.out.println(multipleFilters);
@@ -735,7 +776,7 @@ updateFilterResult();
         sqlMaxQ = "";
     }
    
-    
+    //Updates the minimum quatity filtering
     if((int)spnQuantityMin.getValue() != 0){
           if(multipleFilters){
             
@@ -749,6 +790,8 @@ updateFilterResult();
         sqlMinQ = "";
     }
    
+    
+    //Updates the filerting by SMD
     if(!(tglFilterSMD.getText().equalsIgnoreCase("NOT SELECTED"))){
         
          if(multipleFilters){
@@ -768,17 +811,17 @@ updateFilterResult();
    
     
           //System.out.println("Multiple Filters" + multipleFilters);
-                
+                //if at least one of the filters have been applied, update the SQL
                 if(multipleFilters){
-                
+                //assemble the final SQL
                 String SQLFinal = "SELECT * FROM tblComponents WHERE " + where +sqlName+sqlMaxQ+sqlMinQ+sqlMaxP+sqlMinP+sqlSMD;
-                System.out.println(SQLFinal);
+               // System.out.println(SQLFinal);
                 
                  DBmanager db = new DBmanager();
 
         db.connectDB();
         
-       
+       //Updates the list with the filtered reasults
         ComponentsLst.setListData(db.getSearch(SQLFinal));
         
        
@@ -787,10 +830,12 @@ updateFilterResult();
                 }
     }
     private void spnQuantityMinStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQuantityMinStateChanged
-       updateFilterResult();   // TODO add your handling code here:
+   //if this action is perfromed, the filtered list is update, this is done so that the user does not have to press a button to update their filter list.
+        updateFilterResult();   // TODO add your handling code here:
     }//GEN-LAST:event_spnQuantityMinStateChanged
 
     private void txtFilterNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterNameKeyReleased
+        //if this action is perfromed, the filtered list is update, this is done so that the user does not have to press a button to update their filter list.
         updateFilterResult();
     }//GEN-LAST:event_txtFilterNameKeyReleased
 
@@ -981,7 +1026,8 @@ updateFilterResult();
     }//GEN-LAST:event_btnFilterActionPerformed
 
     private void spnPriceMinStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnPriceMinStateChanged
-updateFilterResult();        // TODO add your handling code here:
+//if this action is perfromed, the filtered list is update, this is done so that the user does not have to press a button to update their filter list.
+        updateFilterResult();        // TODO add your handling code here:
     }//GEN-LAST:event_spnPriceMinStateChanged
 
     private void spnPriceMaxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnPriceMaxStateChanged
@@ -989,23 +1035,28 @@ updateFilterResult();        // TODO add your handling code here:
     }//GEN-LAST:event_spnPriceMaxStateChanged
 
     private void spnQuantityMinKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spnQuantityMinKeyReleased
-updateFilterResult();        // TODO add your handling code here:
+//if this action is perfromed, the filtered list is update, this is done so that the user does not have to press a button to update their filter list.
+        updateFilterResult();        // TODO add your handling code here:
     }//GEN-LAST:event_spnQuantityMinKeyReleased
 
     private void spnQuantityMaxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spnQuantityMaxKeyReleased
-updateFilterResult();         // TODO add your handling code here:
+//if this action is perfromed, the filtered list is update, this is done so that the user does not have to press a button to update their filter list.
+        updateFilterResult();         // TODO add your handling code here:
     }//GEN-LAST:event_spnQuantityMaxKeyReleased
 
     private void spnPriceMinKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spnPriceMinKeyReleased
-updateFilterResult();         // TODO add your handling code here:
+//if this action is perfromed, the filtered list is update, this is done so that the user does not have to press a button to update their filter list.
+        updateFilterResult();         // TODO add your handling code here:
     }//GEN-LAST:event_spnPriceMinKeyReleased
 
     private void spnPriceMaxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spnPriceMaxKeyReleased
-updateFilterResult();         // TODO add your handling code here:
+//if this action is perfromed, the filtered list is update, this is done so that the user does not have to press a button to update their filter list.
+        updateFilterResult();         // TODO add your handling code here:
     }//GEN-LAST:event_spnPriceMaxKeyReleased
 
     private void txtFilterNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterNameKeyTyped
-updateFilterResult();        // TODO add your handling code here:
+//if this action is perfromed, the filtered list is update, this is done so that the user does not have to press a button to update their filter list.
+        updateFilterResult();        // TODO add your handling code here:
     }//GEN-LAST:event_txtFilterNameKeyTyped
 
 
@@ -1019,6 +1070,8 @@ updateFilterResult();        // TODO add your handling code here:
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
+        //Crack Magic - Installs and applies the look and feel 
       UIManager.installLookAndFeel("FlatLaFDark", "com.formdev.flatlaf.FlatDarkLaf");
         
         
@@ -1032,8 +1085,10 @@ updateFilterResult();        // TODO add your handling code here:
               
             //  javax.swing.UIManager.LookAndFeelInfo info  javax.swing.UIManager.getInstalledLookAndFeels() 
             try{
+                
+                //This is bad code, check if the name is flatlaf dark, then puts it in an array, then sets the installed look and feel to the final element.
             if("FlatLaFDark".equalsIgnoreCase(UIManager.getInstalledLookAndFeels()[i].getName())){
-              //System.out.println(UIManager.getInstalledLookAndFeels()[i].getClassName());
+              System.out.println(UIManager.getInstalledLookAndFeels()[i].getClassName());
              FlatDarkLaf.setup();
              
           UIManager.setLookAndFeel(UIManager.getInstalledLookAndFeels()[i].getClassName());
@@ -1072,6 +1127,9 @@ updateFilterResult();        // TODO add your handling code here:
     }
 
     public void refresh() {
+//method to refresh the list when returning to the page.
+
+        
 
         DBmanager db = new DBmanager();
 

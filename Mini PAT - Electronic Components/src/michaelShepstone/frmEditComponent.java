@@ -21,13 +21,15 @@ public class frmEditComponent extends javax.swing.JFrame {
      */
     private int componentID = -1;
      public frmEditComponent( ) {
+         
+         //Set size and location
          setSize(1000, 600);
          setLocation(100, 200);
                 
          //Component returnComponent 
         
         initComponents();
-        
+        //hide the error messages from the user
           lblGeneralError.setVisible(false);
         lblDateError.setVisible(false);
         lblNameError.setVisible(false);
@@ -37,7 +39,7 @@ public class frmEditComponent extends javax.swing.JFrame {
         
          initComponents();
          
-         
+         //Set all the data in the ediatable fields to the data from the component to be edited
         dpReleaseDate.setDate(oldComponent.getReleaseDate());
         
        
@@ -54,6 +56,8 @@ public class frmEditComponent extends javax.swing.JFrame {
         txtComponentName.setText(oldComponent.getComponentName());
         componentID = oldComponent.getId();
         
+        
+        //hide the error messages
            lblGeneralError.setVisible(false);
         lblDateError.setVisible(false);
          lblNameError.setVisible(false);
@@ -176,6 +180,7 @@ public class frmEditComponent extends javax.swing.JFrame {
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dpReleaseDate, spnPrice, spnQuantity, tglSMD, txtComponentName});
 
         btnSubmit.setText("Submit");
+        btnSubmit.setToolTipText("Commit the changes to the databse");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
@@ -233,6 +238,8 @@ public class frmEditComponent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tglSMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglSMDActionPerformed
+     //If the button is pressed, change the text in order to represent it's state
+        
         if(tglSMD.isSelected()){
             tglSMD.setText("TRUE");
         }else{
@@ -248,18 +255,25 @@ public class frmEditComponent extends javax.swing.JFrame {
     
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
 
+        //if the submit button is pressed, add the data that the user entered to the database
+        
+        //Get data from components
         String componentName = txtComponentName.getText();
         int componentQuantity = (int) spnQuantity.getValue();
         double componentPrice = (double) spnPrice.getValue();
         boolean SMD = tglSMD.isSelected();
         LocalDate releaseDate = dpReleaseDate.getDate();
 
+        
+        //cereate a component with this data
         Component returnComponent = new Component(componentID, componentName, componentPrice, componentQuantity, SMD, releaseDate);
 
         
         
         DBmanager db = new DBmanager();
         
+        
+        //Check for errors
         if(componentName.isBlank()){
                 lblNameError.setVisible(true);
                 lblGeneralError.setVisible(true);
@@ -270,13 +284,16 @@ public class frmEditComponent extends javax.swing.JFrame {
                 lblGeneralError.setVisible(true);
             }
         
+        
      else   if(db.editComponent(returnComponent)){
-
+//if the changes were sucesful, return the user to the main form.
             new DataBaseGUI_MainFrm().setVisible(true);
 
             this.dispose();}
 
         else{
+         
+         //If there was an error, display an error message to the user
             lblGeneralError.setVisible(true);
             
 
