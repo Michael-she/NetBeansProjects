@@ -243,14 +243,9 @@ public class frmAddComponent extends javax.swing.JFrame {
         lblGeneralError.setVisible(false);
         lblNameError.setVisible(false);
           if( JOptionPane.showConfirmDialog(null, "Would you like to add the following component?\nNAME: "+returnComponent.getComponentName()+"\nQUANTITY: "+returnComponent.getComponentQuantity()+"\nPRICE: "+returnComponent.getComponentPrice()+"\nSMD: "+returnComponent.isSMD()+"\nRELEASE DATE: "+returnComponent.getReleaseDate(), "ADD COMPONENT?", JOptionPane.YES_NO_OPTION)==0){
-                new DataBaseGUI_MainFrm().setVisible(true);
-        
-        this.dispose();
                 
                 
-            }
-        //logic to ensure that all the fields required for the database are working
-        if(db.addComponent(returnComponent) && !componentName.isBlank()){
+                if(db.addComponent(returnComponent) && !componentName.isBlank()){
        
           
         }
@@ -265,6 +260,9 @@ public class frmAddComponent extends javax.swing.JFrame {
         if(releaseDate == null){
             lblDateError.setVisible(true);
         }
+            }
+        //logic to ensure that all the fields required for the database are working
+        
         
         
         }
