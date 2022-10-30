@@ -22,7 +22,7 @@ public class frmAddComponent extends javax.swing.JFrame {
      */
     public frmAddComponent() {
         initComponents();
-        
+        this.setTitle("Electronic Component Manager - Add Component");
         //Hides the error messages from the user
         lblGeneralError.setVisible(false);
         lblDateError.setVisible(false);
@@ -52,9 +52,10 @@ public class frmAddComponent extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         tglSMD = new javax.swing.JToggleButton();
         btnSubmit = new javax.swing.JButton();
-        lblGeneralError = new javax.swing.JLabel();
         lblNameError = new javax.swing.JLabel();
+        lblGeneralError = new javax.swing.JLabel();
         lblDateError = new javax.swing.JLabel();
+        btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,7 +71,7 @@ public class frmAddComponent extends javax.swing.JFrame {
 
         spnQuantity.setModel(new javax.swing.SpinnerNumberModel(1, 0, null, 1));
 
-        spnPrice.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        spnPrice.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.0d));
 
         jLabel1.setText("Component Name");
 
@@ -156,14 +157,21 @@ public class frmAddComponent extends javax.swing.JFrame {
             }
         });
 
-        lblGeneralError.setText("There is one or more erros preventing you from submitting");
-        lblGeneralError.setForeground(new java.awt.Color(255, 0, 0));
-
         lblNameError.setText("This must not be left blank");
         lblNameError.setForeground(new java.awt.Color(255, 0, 0));
 
+        lblGeneralError.setText("There is one or more erros preventing you from submitting");
+        lblGeneralError.setForeground(new java.awt.Color(255, 0, 0));
+
         lblDateError.setText("This is not a valid date");
         lblDateError.setForeground(new java.awt.Color(255, 0, 0));
+
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,7 +185,7 @@ public class frmAddComponent extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(0, 28, Short.MAX_VALUE)
                                 .addComponent(lblNameError))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblDateError)
@@ -186,7 +194,8 @@ public class frmAddComponent extends javax.swing.JFrame {
                         .addComponent(lblGeneralError)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSubmit)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnClose)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -205,6 +214,7 @@ public class frmAddComponent extends javax.swing.JFrame {
                         .addGap(14, 14, 14)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit)
+                    .addComponent(btnClose)
                     .addComponent(lblGeneralError))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -232,17 +242,17 @@ public class frmAddComponent extends javax.swing.JFrame {
         lblDateError.setVisible(false);
         lblGeneralError.setVisible(false);
         lblNameError.setVisible(false);
-        
-        //logic to ensure that all the fields required for the database are working
-        if(db.addComponent(returnComponent) && !componentName.isBlank()){
-       
-            if( JOptionPane.showConfirmDialog(null, "Would you like to add the following component?\nNAME: "+returnComponent.getComponentName()+"\nQUANTITY: "+returnComponent.getComponentQuantity()+"\nPRICE: "+returnComponent.getComponentPrice()+"\nSMD: "+returnComponent.isSMD()+"\nRELEASE DATE: "+returnComponent.getReleaseDate(), "ADD COMPONENT?", JOptionPane.YES_NO_OPTION)==0){
+          if( JOptionPane.showConfirmDialog(null, "Would you like to add the following component?\nNAME: "+returnComponent.getComponentName()+"\nQUANTITY: "+returnComponent.getComponentQuantity()+"\nPRICE: "+returnComponent.getComponentPrice()+"\nSMD: "+returnComponent.isSMD()+"\nRELEASE DATE: "+returnComponent.getReleaseDate(), "ADD COMPONENT?", JOptionPane.YES_NO_OPTION)==0){
                 new DataBaseGUI_MainFrm().setVisible(true);
         
         this.dispose();
                 
                 
             }
+        //logic to ensure that all the fields required for the database are working
+        if(db.addComponent(returnComponent) && !componentName.isBlank()){
+       
+          
         }
         
         else if(!db.addComponent(returnComponent)){
@@ -274,6 +284,12 @@ public class frmAddComponent extends javax.swing.JFrame {
            tglSMD.setText("FALSE");
        }
     }//GEN-LAST:event_tglSMDActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+     new DataBaseGUI_MainFrm().setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,6 +347,7 @@ public class frmAddComponent extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSubmit;
     private com.github.lgooddatepicker.components.DatePicker dpReleaseDate;
     private javax.swing.JLabel jLabel1;

@@ -25,7 +25,7 @@ public class DataBaseGUI_MainFrm extends javax.swing.JFrame {
         initComponents();
  //initialise Database
         DBmanager db = new DBmanager();
-
+this.setTitle("Electronic Component Manager");
         db.connectDB();
 
              scrFilters.setVisible(false);
@@ -815,7 +815,7 @@ if(tglFilter.isSelected()){
                 if(multipleFilters){
                 //assemble the final SQL
                 String SQLFinal = "SELECT * FROM tblComponents WHERE " + where +sqlName+sqlMaxQ+sqlMinQ+sqlMaxP+sqlMinP+sqlSMD;
-               // System.out.println(SQLFinal);
+                System.out.println(SQLFinal);
                 
                  DBmanager db = new DBmanager();
 

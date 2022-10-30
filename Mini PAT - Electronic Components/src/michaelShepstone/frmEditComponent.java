@@ -29,6 +29,7 @@ public class frmEditComponent extends javax.swing.JFrame {
          //Component returnComponent 
         
         initComponents();
+        this.setTitle("Electronic Component Manager - Edit Component");
         //hide the error messages from the user
           lblGeneralError.setVisible(false);
         lblDateError.setVisible(false);
@@ -38,7 +39,7 @@ public class frmEditComponent extends javax.swing.JFrame {
     public frmEditComponent( Component oldComponent ) {
         
          initComponents();
-         
+         this.setTitle("Electronic Component Manager - Edit Component");
          //Set all the data in the ediatable fields to the data from the component to be edited
         dpReleaseDate.setDate(oldComponent.getReleaseDate());
         
@@ -88,6 +89,7 @@ public class frmEditComponent extends javax.swing.JFrame {
         lblGeneralError = new javax.swing.JLabel();
         lblNameError = new javax.swing.JLabel();
         lblDateError = new javax.swing.JLabel();
+        btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,7 +109,7 @@ public class frmEditComponent extends javax.swing.JFrame {
 
         spnQuantity.setModel(new javax.swing.SpinnerNumberModel(1, 0, null, 1));
 
-        spnPrice.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        spnPrice.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.0d));
 
         jLabel1.setText("Component Name");
 
@@ -196,24 +198,33 @@ public class frmEditComponent extends javax.swing.JFrame {
         lblDateError.setText("This is not a valid date");
         lblDateError.setForeground(new java.awt.Color(255, 0, 0));
 
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDateError)
-                    .addComponent(lblNameError))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDateError)
+                            .addComponent(lblNameError)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblGeneralError)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSubmit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnClose)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblGeneralError)
-                .addGap(18, 18, 18)
-                .addComponent(btnSubmit)
-                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +241,8 @@ public class frmEditComponent extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit)
-                    .addComponent(lblGeneralError))
+                    .addComponent(lblGeneralError)
+                    .addComponent(btnClose))
                 .addContainerGap())
         );
 
@@ -301,6 +313,12 @@ public class frmEditComponent extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSubmitActionPerformed
 
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        new DataBaseGUI_MainFrm().setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -358,6 +376,7 @@ public class frmEditComponent extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSubmit;
     private com.github.lgooddatepicker.components.DatePicker dpReleaseDate;
     private javax.swing.JLabel jLabel1;
