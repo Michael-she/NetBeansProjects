@@ -16,6 +16,13 @@ import java.util.Scanner;
 public class RaceManager 
 {
     
+    
+    public static void main(String[] args){
+        RaceManager();
+        
+        
+        
+    }
     Racer raceArr[] = new Racer[800];
     
   public void RaceManager(){
@@ -56,7 +63,7 @@ i++;
   }
   
   public String toString(){
-      for (int i  = 0; i<raceArr.length(); i ++){
+      for (int i  = 0; i<raceArr.length; i ++){
       System.out.println(raceArr[i]);
       
   }
