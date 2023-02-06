@@ -247,20 +247,24 @@ public class frmAddComponent extends javax.swing.JFrame {
                 
                 if(db.addComponent(returnComponent) && !componentName.isBlank()){
        
-          
+          this.dispose();
+              new DataBaseGUI_MainFrm().setVisible(true);
         }
         
-        else if(!db.addComponent(returnComponent)){
+         else{
             lblGeneralError.setVisible(true);
+         }
         if(componentName.isBlank()){
             lblNameError.setVisible(true);
+            lblGeneralError.setVisible(true);
             
         }
         
         if(releaseDate == null){
             lblDateError.setVisible(true);
+            lblGeneralError.setVisible(true);
         }
-            }
+            
         //logic to ensure that all the fields required for the database are working
         
         

@@ -516,6 +516,23 @@ this.setTitle("Electronic Component Manager");
         spnQuantityMin.setValue(0);
         txtFilterName.setText("");
         
+        //This code has to be repeated twice as the SQL is being funky
+
+        db.connectDB();
+
+        db.displayAllComponents();
+        
+        //Get all teh components from the database and put them in the list
+        ComponentsLst.setListData(db.getAllComponents());
+        db.disconnectDB();
+        //reset the filters
+        tglFilterSMD.setText("NOT SELECTED");
+        spnPriceMax.setValue(0);
+        spnPriceMin.setValue(0);
+        spnQuantityMax.setValue(0);
+        spnQuantityMin.setValue(0);
+        txtFilterName.setText("");
+        
         
         
     }//GEN-LAST:event_BtnViewActionPerformed
@@ -579,7 +596,7 @@ if(tglFilter.isSelected()){
 
             btnEdit.setEnabled(true);
             btnDelete.setEnabled(true);
-            
+            System.out.println(((Component) ComponentsLst.getSelectedValue()).getId());
         }
     }//GEN-LAST:event_ComponentsLstValueChanged
 

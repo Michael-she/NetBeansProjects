@@ -50,7 +50,7 @@ public class frmEditComponent extends javax.swing.JFrame {
         }else{
             tglSMD.setText("FALSE");
         }
-         
+         System.out.println("ID - "+oldComponent.getId());
          
         spnPrice.setValue(oldComponent.getComponentPrice());
         spnQuantity.setValue(oldComponent.getComponentQuantity());

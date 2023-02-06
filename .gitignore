@@ -1,4 +1,5 @@
 /Mini PAT - Electronic Components/dist/
+<<<<<<< Updated upstream
 /2021 Prac practise/nbproject/private/
 /Hangman Autocomplete/nbproject/private/
 /Hangman Autocomplete/build/
@@ -8,3 +9,16 @@
 /Inheritance 101/build/
 /DeferentationCalculator/nbproject/private/
 /DeferentationCalculator/build/
+=======
+/novMockPaper/build/
+/novMockPaper/nbproject/private/
+/2019PastPaper/target/
+/2019 Past Paper/nbproject/private/
+/2019 Past Paper/build/
+/GPT3 Test/nbproject/private/
+/GPT3 Test/build/
+/Clubs Manager/nbproject/private/
+/Clubs Manager/build/
+/Patterns test/nbproject/private/
+/Patterns test/build/
+>>>>>>> Stashed changes
