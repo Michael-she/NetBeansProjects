@@ -1,3 +1,5 @@
+package clubs.manager;
+
 
 import java.io.*;
 
