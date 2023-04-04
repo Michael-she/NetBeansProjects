@@ -11,7 +11,7 @@ import java.net.*;
  *
  * @author Michael
  */
-public class HTTPRequest {
+public class ChucknorrisHTTP {
 
     /**
      * @param args the command line arguments
@@ -56,7 +56,7 @@ in.close();
 String stringResponse =""+ content;
 String [] outputArr = stringResponse.split(":");
 
-
+                System.out.println(stringResponse);
 
 for(int i = 0; i<outputArr.length; i++){
  // System.out.println(i + ": " +outputArr[i]);  
