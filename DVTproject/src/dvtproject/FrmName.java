@@ -4,6 +4,9 @@
  */
 package dvtproject;
 
+
+import java.time.*;
+import java.time.format.DateTimeParseException;
 /**
  *
  * @author Michael
@@ -49,6 +52,7 @@ public class FrmName extends javax.swing.JFrame {
         lblErrorPacketCount = new javax.swing.JLabel();
         lblErrorScrambled = new javax.swing.JLabel();
         lblErrorDateTransmitted = new javax.swing.JLabel();
+        dpDateTransmited = new com.github.lgooddatepicker.components.DatePicker();
         btnValidate = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
@@ -99,15 +103,16 @@ public class FrmName extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
                     .addComponent(lblPacketLength))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtRadioPacket, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlFormLayout.createSequentialGroup()
                         .addComponent(rbtnTrue)
                         .addGap(18, 18, 18)
-                        .addComponent(rbtnFalse)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rbtnFalse))
+                    .addComponent(dpDateTransmited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblErrorPacketCount)
                     .addComponent(lblErrorPacketString)
@@ -146,8 +151,9 @@ public class FrmName extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblErrorDateTransmitted, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(44, 44, 44))
+                    .addComponent(lblErrorDateTransmitted, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dpDateTransmited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
 
         btnValidate.setText("VALIDATE PACKET");
@@ -165,16 +171,14 @@ public class FrmName extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(lblTitle)
-                .addContainerGap(61, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(159, 159, 159)
-                .addComponent(btnValidate)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(lblTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(btnValidate))
+                    .addComponent(pnlForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -186,7 +190,7 @@ public class FrmName extends javax.swing.JFrame {
                 .addComponent(pnlForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnValidate)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -206,6 +210,27 @@ public class FrmName extends javax.swing.JFrame {
     
     
     private boolean checkRadioString(String message) {
+        
+        
+        if(message.length() < 12){
+            lblErrorPacketString.setText("The message is shorter than the minimum physically possible length");
+            
+            return false;
+        }
+        
+        if(! (message.charAt(0) == '<')){
+            lblErrorPacketString.setText("The first character must be '<'");
+            
+            return false;
+            
+        }
+        if(! (message.charAt(message.length()-1) == '>')){
+            lblErrorPacketString.setText("The final character must be '>'");
+            
+            return false;
+            
+        }
+        
         for (int i = 0; i < message.length(); i++) {
             char ch = message.charAt(i);
             System.out.println(ch);
@@ -215,6 +240,12 @@ public class FrmName extends javax.swing.JFrame {
                 lblErrorPacketString.setText("Invalid character '" + ch + "' at position " + i++);
                 return false;
             }
+        }
+        
+        
+        if(!checkForDatePacket()){
+      
+                return false;
         }
         System.out.println("Returning True");
         
@@ -230,7 +261,7 @@ public class FrmName extends javax.swing.JFrame {
         'U', 'V', 'W', 'X', 'Y', 'Z',
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
         'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-        'u', 'v', 'w', 'x', 'y', 'z', '<', '>'
+        'u', 'v', 'w', 'x', 'y', 'z', '<', '>', '/', '_'
     };
          
         for (char allowedChar : ALLOWED_CHARACTERS) {
@@ -241,13 +272,79 @@ public class FrmName extends javax.swing.JFrame {
         return false;
     }
     
+    public boolean checkForDatePacket(){
+       String radioMessage = txtRadioPacket.getText();
+       String datePacket = radioMessage.substring(radioMessage.length()-11, radioMessage.length()-1);
+        System.out.println("datePacket:" + datePacket);
+        if(!validateDate( datePacket)){
+            return false;
+        }
+     return true;   
+    }
+    
+   private boolean validateDate(String dateStr){
+       
+       String dayStr = dateStr.substring(0,2);
+       String monthStr = dateStr.substring(3,5);
+       String yearStr = dateStr.substring(6,10);
+       
+       try{
+           System.out.println(yearStr+"-"+monthStr+"-"+dayStr);
+           LocalDate packetDate = LocalDate.parse(yearStr+"-"+monthStr+"-"+dayStr);
+            System.out.println(packetDate);
+       }catch(DateTimeParseException e){
+           lblErrorPacketString.setText("The date is not valid, or in the incorrect place. The date should be in the format dd/mm/yyyy");
+           System.err.println("The date is not valid. The date should be in the format dd/mm/yyyy");
+           return false;
+       }
+      
+       
+       return true;
+   }
+   private boolean balancePackets(){
+       System.out.println("BALANCE PACKETS");
+       int packetCount = 0;
+       boolean packetOpened = false;
+       for(int i = 0; i<txtRadioPacket.getText().length(); i++){
+        if(txtRadioPacket.getText().charAt(i)=='<'){
+            System.out.println(i);
+            if(packetOpened){
+                System.err.println("Unexpected '<' at position " + (i+1)+". The packet must be closed before another one can be opened");
+            lblErrorPacketString.setText("Unexpected '<' at position " + (i+1)+". The packet must be closed before another one can be opened");
+            return false;
+            }
+            packetCount++;
+            packetOpened = true;
+        }
+        if(txtRadioPacket.getText().charAt(i)=='>'){
+            packetOpened = false;
+        }
+       }  
+       
+       if(!(packetCount == (int)spnLength.getValue())){
+           System.err.println("The number of packets does not equal the number in the message");
+           lblErrorPacketCount.setText("The number of packets does not equal the number in the message");
+           return false;
+       }
+       return true;
+   }
+    private boolean checkDate(){
+        if(dpDateTransmited.getDate().isBefore(LocalDate.of(2008, 04, 22))){
+            
+            
+            
+        }
+        
+        
+        return true;
+    }
    private void checkPresence(){
        
         
         if(txtRadioPacket.getText().isBlank()){
             lblErrorPacketString.setText("This field cannot be left blank");
         }else if(checkRadioString(txtRadioPacket.getText()) == false){
-        }else if(false){
+        }else if(!(balancePackets())){
             
         }else{
                  lblErrorPacketString.setText("");
@@ -255,12 +352,17 @@ public class FrmName extends javax.swing.JFrame {
         
         if((int) spnLength.getValue() == 0){
             lblErrorPacketCount.setText("The packet Length cannot be zero");
+        }else if(!(balancePackets())){
+        
         }else{
             lblErrorPacketCount.setText("");
         }
         
-        if(dpDateTransmitted.getDate()== null){
+        if(dpDateTransmited.getDate()== null){
             lblErrorDateTransmitted.setText("The Date cannot be blank");
+        }else if(checkDate()){
+            
+            
         }else{
             lblErrorDateTransmitted.setText("");
         }
@@ -313,6 +415,7 @@ public class FrmName extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnValidate;
     private javax.swing.ButtonGroup btngrpScrambled;
+    private com.github.lgooddatepicker.components.DatePicker dpDateTransmited;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblErrorDateTransmitted;
