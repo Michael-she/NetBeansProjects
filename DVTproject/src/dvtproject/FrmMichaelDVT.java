@@ -5,18 +5,19 @@
 package dvtproject;
 
 
+import java.awt.Color;
 import java.time.*;
 import java.time.format.DateTimeParseException;
 /**
  *
  * @author Michael
  */
-public class FrmName extends javax.swing.JFrame {
+public class FrmMichaelDVT extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmName
      */
-    public FrmName() {
+    public FrmMichaelDVT() {
         initComponents();
         clearAllErrorLables();
     }
@@ -27,6 +28,8 @@ public class FrmName extends javax.swing.JFrame {
         lblErrorPacketCount.setText("");
         lblErrorPacketString.setText("");
         lblErrorScrambled.setText("");
+        pnlSucsess.setVisible(false);
+        lblSucsess.setText("");
     }
 
     /**
@@ -53,6 +56,8 @@ public class FrmName extends javax.swing.JFrame {
         lblErrorScrambled = new javax.swing.JLabel();
         lblErrorDateTransmitted = new javax.swing.JLabel();
         dpDateTransmited = new com.github.lgooddatepicker.components.DatePicker();
+        pnlSucsess = new javax.swing.JPanel();
+        lblSucsess = new javax.swing.JLabel();
         btnValidate = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
@@ -84,13 +89,37 @@ public class FrmName extends javax.swing.JFrame {
 
         jLabel2.setText("Date Transmitted");
 
+        lblErrorPacketString.setForeground(new java.awt.Color(204, 0, 0));
         lblErrorPacketString.setText("jLabel3");
 
+        lblErrorPacketCount.setForeground(new java.awt.Color(204, 0, 0));
         lblErrorPacketCount.setText("jLabel4");
 
+        lblErrorScrambled.setForeground(new java.awt.Color(204, 0, 0));
         lblErrorScrambled.setText("jLabel5");
 
+        lblErrorDateTransmitted.setForeground(new java.awt.Color(204, 0, 0));
         lblErrorDateTransmitted.setText("jLabel6");
+
+        lblSucsess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSucsess.setText("jLabel3");
+
+        javax.swing.GroupLayout pnlSucsessLayout = new javax.swing.GroupLayout(pnlSucsess);
+        pnlSucsess.setLayout(pnlSucsessLayout);
+        pnlSucsessLayout.setHorizontalGroup(
+            pnlSucsessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSucsessLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSucsess, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlSucsessLayout.setVerticalGroup(
+            pnlSucsessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSucsessLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSucsess, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout pnlFormLayout = new javax.swing.GroupLayout(pnlForm);
         pnlForm.setLayout(pnlFormLayout);
@@ -105,20 +134,25 @@ public class FrmName extends javax.swing.JFrame {
                     .addComponent(lblPacketLength))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRadioPacket, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlFormLayout.createSequentialGroup()
-                        .addComponent(rbtnTrue)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbtnFalse))
-                    .addComponent(dpDateTransmited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblErrorPacketCount)
-                    .addComponent(lblErrorPacketString)
-                    .addComponent(lblErrorScrambled)
-                    .addComponent(lblErrorDateTransmitted))
-                .addGap(23, 23, 23))
+                        .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRadioPacket, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spnLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlFormLayout.createSequentialGroup()
+                                .addComponent(rbtnTrue)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbtnFalse))
+                            .addComponent(dpDateTransmited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblErrorPacketCount)
+                            .addComponent(lblErrorPacketString)
+                            .addComponent(lblErrorScrambled)
+                            .addComponent(lblErrorDateTransmitted))
+                        .addGap(23, 23, 23))
+                    .addGroup(pnlFormLayout.createSequentialGroup()
+                        .addComponent(pnlSucsess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlFormLayout.setVerticalGroup(
             pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +187,9 @@ public class FrmName extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblErrorDateTransmitted, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dpDateTransmited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
+                .addGap(18, 18, 18)
+                .addComponent(pnlSucsess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         btnValidate.setText("VALIDATE PACKET");
@@ -175,11 +211,12 @@ public class FrmName extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(lblTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(btnValidate))
                     .addComponent(pnlForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnValidate)
+                .addGap(131, 131, 131))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,9 +225,9 @@ public class FrmName extends javax.swing.JFrame {
                 .addComponent(lblTitle)
                 .addGap(18, 18, 18)
                 .addComponent(pnlForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnValidate)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,15 +235,19 @@ public class FrmName extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnValidateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidateActionPerformed
-        checkPresence();
+        if(checkData()){
+            lblSucsess.setText("The Data is valid");
+            pnlSucsess.setBackground(Color.green);
+            pnlSucsess.setVisible(true);
+        }else{
+             lblSucsess.setText("The Data is invalid");
+            pnlSucsess.setBackground(Color.red);
+            pnlSucsess.setVisible(true);  
+        }
         
     }//GEN-LAST:event_btnValidateActionPerformed
 
-    private static void checkRadioString(){
     
-        
-        
-}
     
     
     private boolean checkRadioString(String message) {
@@ -252,6 +293,44 @@ public class FrmName extends javax.swing.JFrame {
                 return true;
     }
     
+    public boolean checkScrambledMessage(){
+        if(rbtnTrue.isSelected()){
+       String  message = txtRadioPacket.getText();
+        
+       for (int i = 0; i < message.length(); i++) {
+            char ch = message.charAt(i);
+            System.out.println(ch);
+            if (!isScrambledMessageChar(ch)) {
+                System.out.println("Invalid character '" + ch + "' at position " + i++);
+                
+                lblErrorPacketString.setText("Invalid character '" + ch + "' at position " + i++);
+                return false;
+            }
+        }
+        
+        }
+        System.out.println("Returning True");
+        
+                return true;
+    }
+    
+    
+    
+    private boolean isScrambledMessageChar(char ch){
+        
+        final char[] ALLOWED_CHARACTERS = {
+      
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+        '<', '>', '/', '_'
+    };
+        for (char allowedChar : ALLOWED_CHARACTERS) {
+            if (allowedChar == ch) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     private static boolean isAllowedCharacter(char ch) {
       final char[] ALLOWED_CHARACTERS = {
       
@@ -283,7 +362,7 @@ public class FrmName extends javax.swing.JFrame {
     }
     
    private boolean validateDate(String dateStr){
-       
+     
        String dayStr = dateStr.substring(0,2);
        String monthStr = dateStr.substring(3,5);
        String yearStr = dateStr.substring(6,10);
@@ -331,47 +410,66 @@ public class FrmName extends javax.swing.JFrame {
     private boolean checkDate(){
         if(dpDateTransmited.getDate().isBefore(LocalDate.of(2008, 04, 22))){
             
-            
-            
+            lblErrorDateTransmitted.setText("This system was invented on the 22 of April 2008. \nNo packets can be sent before then");
+            return false;
         }
-        
+        else if(dpDateTransmited.getDate().isAfter(LocalDate.now())){
+            
+            lblErrorDateTransmitted.setText("This system cannt be used for packets yet to be sent");
+            return false;
+        }
         
         return true;
     }
-   private void checkPresence(){
+   private boolean checkData(){
        
+       boolean dataValid = true;
         
         if(txtRadioPacket.getText().isBlank()){
             lblErrorPacketString.setText("This field cannot be left blank");
+            dataValid = false;
+                    
         }else if(checkRadioString(txtRadioPacket.getText()) == false){
+            dataValid = false;
         }else if(!(balancePackets())){
-            
+            dataValid = false;
         }else{
                  lblErrorPacketString.setText("");
         }
         
         if((int) spnLength.getValue() == 0){
+            dataValid = false;
             lblErrorPacketCount.setText("The packet Length cannot be zero");
         }else if(!(balancePackets())){
-        
+            dataValid = false;
         }else{
             lblErrorPacketCount.setText("");
         }
-        
+        System.out.println("DATE RUN");
         if(dpDateTransmited.getDate()== null){
+            dataValid = false;
             lblErrorDateTransmitted.setText("The Date cannot be blank");
-        }else if(checkDate()){
-            
+        }else if(!checkDate()){
+            dataValid = false;
+            System.out.println("The date failed the check");
             
         }else{
             lblErrorDateTransmitted.setText("");
+            System.out.println("The date Passed the check");
         }
         
         if(!rbtnFalse.isSelected() && !rbtnTrue.isSelected()){
+            dataValid = false;
          lblErrorScrambled.setText("An option needs to be selected");
+        }else if(!checkScrambledMessage()){
+        dataValid = false;
+            lblErrorScrambled.setText("A scrambled message can only contain numbers and the date packet");
+        
         }else{
             lblErrorScrambled.setText("");
         }
+        
+        return dataValid;
    }
     private void txtRadioPacketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRadioPacketActionPerformed
         // TODO add your handling code here:
@@ -394,20 +492,21 @@ public class FrmName extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmName.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMichaelDVT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmName.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMichaelDVT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmName.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMichaelDVT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmName.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMichaelDVT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmName().setVisible(true);
+                new FrmMichaelDVT().setVisible(true);
             }
         });
     }
@@ -424,8 +523,10 @@ public class FrmName extends javax.swing.JFrame {
     private javax.swing.JLabel lblErrorScrambled;
     private javax.swing.JLabel lblPacketLength;
     private javax.swing.JLabel lblPacketString;
+    private javax.swing.JLabel lblSucsess;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlForm;
+    private javax.swing.JPanel pnlSucsess;
     private javax.swing.JRadioButton rbtnFalse;
     private javax.swing.JRadioButton rbtnTrue;
     private javax.swing.JSpinner spnLength;
