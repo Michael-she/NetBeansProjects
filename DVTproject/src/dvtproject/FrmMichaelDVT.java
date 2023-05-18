@@ -27,6 +27,7 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
         lblErrorDateTransmitted.setText("");
         lblErrorPacketCount.setText("");
         lblErrorPacketString.setText("");
+        lblErrorPacketStringAUX.setText("");
         lblErrorScrambled.setText("");
         pnlSucsess.setVisible(false);
         lblSucsess.setText("");
@@ -50,19 +51,22 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         rbtnTrue = new javax.swing.JRadioButton();
         rbtnFalse = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
-        lblErrorPacketString = new javax.swing.JLabel();
+        lblDateTransmitted = new javax.swing.JLabel();
+        lblErrorPacketStringAUX = new javax.swing.JLabel();
         lblErrorPacketCount = new javax.swing.JLabel();
         lblErrorScrambled = new javax.swing.JLabel();
         lblErrorDateTransmitted = new javax.swing.JLabel();
         dpDateTransmited = new com.github.lgooddatepicker.components.DatePicker();
         pnlSucsess = new javax.swing.JPanel();
         lblSucsess = new javax.swing.JLabel();
+        lblErrorPacketString = new javax.swing.JLabel();
         btnValidate = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Radio Paket Checker");
+        setName("mainFrame"); // NOI18N
+        setSize(new java.awt.Dimension(0, 0));
 
         pnlForm.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), null));
 
@@ -87,22 +91,22 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
         btngrpScrambled.add(rbtnFalse);
         rbtnFalse.setText("False");
 
-        jLabel2.setText("Date Transmitted");
+        lblDateTransmitted.setText("Date Transmitted");
 
-        lblErrorPacketString.setForeground(new java.awt.Color(204, 0, 0));
-        lblErrorPacketString.setText("jLabel3");
+        lblErrorPacketStringAUX.setText("PLACEHOLDER");
+        lblErrorPacketStringAUX.setForeground(new java.awt.Color(204, 0, 0));
 
+        lblErrorPacketCount.setText("PLACEHOLDER");
         lblErrorPacketCount.setForeground(new java.awt.Color(204, 0, 0));
-        lblErrorPacketCount.setText("jLabel4");
 
+        lblErrorScrambled.setText("PLACEHOLDER");
         lblErrorScrambled.setForeground(new java.awt.Color(204, 0, 0));
-        lblErrorScrambled.setText("jLabel5");
 
+        lblErrorDateTransmitted.setText("PLACEHOLDER");
         lblErrorDateTransmitted.setForeground(new java.awt.Color(204, 0, 0));
-        lblErrorDateTransmitted.setText("jLabel6");
 
         lblSucsess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSucsess.setText("jLabel3");
+        lblSucsess.setText("PLACEHOLDER");
 
         javax.swing.GroupLayout pnlSucsessLayout = new javax.swing.GroupLayout(pnlSucsess);
         pnlSucsess.setLayout(pnlSucsessLayout);
@@ -121,6 +125,9 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        lblErrorPacketString.setForeground(new java.awt.Color(204, 0, 0));
+        lblErrorPacketString.setText("PLACEHOLDER");
+
         javax.swing.GroupLayout pnlFormLayout = new javax.swing.GroupLayout(pnlForm);
         pnlForm.setLayout(pnlFormLayout);
         pnlFormLayout.setHorizontalGroup(
@@ -129,43 +136,53 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPacketString)
-                    .addComponent(jLabel2)
+                    .addComponent(lblDateTransmitted)
                     .addComponent(jLabel1)
                     .addComponent(lblPacketLength))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFormLayout.createSequentialGroup()
                         .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRadioPacket, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlFormLayout.createSequentialGroup()
+                                .addComponent(txtRadioPacket, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblErrorPacketStringAUX, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblErrorPacketString, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(spnLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlFormLayout.createSequentialGroup()
                                 .addComponent(rbtnTrue)
                                 .addGap(18, 18, 18)
                                 .addComponent(rbtnFalse))
                             .addComponent(dpDateTransmited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                        .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblErrorPacketCount)
-                            .addComponent(lblErrorPacketString)
-                            .addComponent(lblErrorScrambled)
-                            .addComponent(lblErrorDateTransmitted))
-                        .addGap(23, 23, 23))
+                        .addGap(14, 14, 14))
                     .addGroup(pnlFormLayout.createSequentialGroup()
-                        .addComponent(pnlSucsess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlSucsess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlFormLayout.createSequentialGroup()
+                                .addGap(204, 204, 204)
+                                .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblErrorDateTransmitted)
+                                    .addComponent(lblErrorScrambled)
+                                    .addComponent(lblErrorPacketCount))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlFormLayout.setVerticalGroup(
             pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFormLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
                 .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFormLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblErrorPacketString, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblPacketString, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtRadioPacket)))
-                .addGap(6, 6, 6)
+                        .addGap(23, 23, 23)
+                        .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPacketString, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtRadioPacket))
+                        .addGap(6, 6, 6))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFormLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblErrorPacketStringAUX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1, 1, 1)
+                        .addComponent(lblErrorPacketString, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFormLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -184,7 +201,7 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
                         .addComponent(rbtnFalse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblDateTransmitted, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblErrorDateTransmitted, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dpDateTransmited, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -199,35 +216,36 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
             }
         });
 
+        lblTitle.setText("Manual Radio Message Validator");
         lblTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTitle.setText("Manaul Radio Message Validator");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(142, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(lblTitle))
-                    .addComponent(pnlForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5))
+                    .addComponent(pnlForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(86, 143, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnValidate)
-                .addGap(131, 131, 131))
+                .addGap(312, 312, 312))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(lblTitle)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnValidate)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -255,28 +273,28 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
         
         if(message.length() < 12){
             lblErrorPacketString.setText("The message is shorter than the minimum physically possible length");
-            
+            System.out.println("\tThe message is shorter than the minimum physically possible length");
             return false;
         }
         
         if(! (message.charAt(0) == '<')){
             lblErrorPacketString.setText("The first character must be '<'");
-            
+             System.out.println("\tThe first character must be '<'");
             return false;
             
         }
         if(! (message.charAt(message.length()-1) == '>')){
             lblErrorPacketString.setText("The final character must be '>'");
-            
+             System.out.println("\tThe final character must be '>'");
             return false;
             
         }
         
         for (int i = 0; i < message.length(); i++) {
             char ch = message.charAt(i);
-            System.out.println(ch);
+            //System.out.println(ch);
             if (!isAllowedCharacter(ch)) {
-                System.out.println("Invalid character '" + ch + "' at position " + i++);
+                System.out.println("\tInvalid character '" + ch + "' at position " + i++);
                 
                 lblErrorPacketString.setText("Invalid character '" + ch + "' at position " + i++);
                 return false;
@@ -285,7 +303,7 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
         
         
         if(!checkForDatePacket()){
-      
+                 System.out.println("\tCheck for date packet Failed");
                 return false;
         }
         System.out.println("Returning True");
@@ -299,7 +317,7 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
         
        for (int i = 0; i < message.length(); i++) {
             char ch = message.charAt(i);
-            System.out.println(ch);
+            //System.out.println(ch);
             if (!isScrambledMessageChar(ch)) {
                 System.out.println("Invalid character '" + ch + "' at position " + i++);
                 
@@ -370,9 +388,17 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
        try{
            System.out.println(yearStr+"-"+monthStr+"-"+dayStr);
            LocalDate packetDate = LocalDate.parse(yearStr+"-"+monthStr+"-"+dayStr);
-            System.out.println(packetDate);
+            System.out.println("PACKET DATE - " +packetDate);
+            System.out.println("USER DATE - " +dpDateTransmited.getDate());
+            if(!(dpDateTransmited.getDate()==null)){
+            if(!(dpDateTransmited.getDate().equals(packetDate))){
+             System.err.println("This date does not equal the date in the packet");
+            lblErrorDateTransmitted.setText("This date does not equal the date in the packet");
+            return false;
+        }}
        }catch(DateTimeParseException e){
-           lblErrorPacketString.setText("The date is not valid, or in the incorrect place. The date should be in the format dd/mm/yyyy");
+           lblErrorPacketStringAUX.setText("The date is not valid, or in the incorrect place.");
+           lblErrorPacketString.setText("The date should be in the format dd/mm/yyyy");
            System.err.println("The date is not valid. The date should be in the format dd/mm/yyyy");
            return false;
        }
@@ -384,21 +410,38 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
        System.out.println("BALANCE PACKETS");
        int packetCount = 0;
        boolean packetOpened = false;
+       int packetContentCount = 0;
        for(int i = 0; i<txtRadioPacket.getText().length(); i++){
+           packetContentCount++;
         if(txtRadioPacket.getText().charAt(i)=='<'){
             System.out.println(i);
+            packetContentCount = 0;
             if(packetOpened){
-                System.err.println("Unexpected '<' at position " + (i+1)+". The packet must be closed before another one can be opened");
-            lblErrorPacketString.setText("Unexpected '<' at position " + (i+1)+". The packet must be closed before another one can be opened");
+                //System.err.println("<html>Unexpected '<' at position " + (i+1)+". \nThe packet must be closed before another one can be opened</html>");
+            lblErrorPacketStringAUX.setText("Unexpected '<' at position " + (i+1)+". ");
+            lblErrorPacketString.setText("The packet must be closed before another one can be opened");
             return false;
             }
             packetCount++;
             packetOpened = true;
         }
         if(txtRadioPacket.getText().charAt(i)=='>'){
+            System.out.println("PACKET COUNT - " +(packetContentCount-1));
+            if(packetContentCount>129){
+                lblErrorPacketString.setText("A packet cannot have more than 128 characters");
+                System.err.println((packetContentCount-1));
+                return false;
+            }
             packetOpened = false;
+            
         }
        }  
+       
+       if(packetCount > 32){
+           System.err.println("The number of packets cannot exceed 32");
+           lblErrorPacketCount.setText("The number of packets cannot exceed 32");
+           return false;
+       }
        
        if(!(packetCount == (int)spnLength.getValue())){
            System.err.println("The number of packets does not equal the number in the message");
@@ -408,9 +451,12 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
        return true;
    }
     private boolean checkDate(){
+        
+        
+        
         if(dpDateTransmited.getDate().isBefore(LocalDate.of(2008, 04, 22))){
             
-            lblErrorDateTransmitted.setText("This system was invented on the 22 of April 2008. \nNo packets can be sent before then");
+            lblErrorDateTransmitted.setText("Packets before the 22nd of April 2008 are not supported");
             return false;
         }
         else if(dpDateTransmited.getDate().isAfter(LocalDate.now())){
@@ -419,22 +465,32 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
             return false;
         }
         
+        if(!checkForDatePacket()){
+            return false;
+        }
+        
         return true;
     }
    private boolean checkData(){
-       
+       clearAllErrorLables();
+                 
+       System.out.println("Validating...");
        boolean dataValid = true;
         
         if(txtRadioPacket.getText().isBlank()){
             lblErrorPacketString.setText("This field cannot be left blank");
             dataValid = false;
-                    
+                    System.out.println("String blank");
         }else if(checkRadioString(txtRadioPacket.getText()) == false){
             dataValid = false;
+             System.out.println("String check failed");
         }else if(!(balancePackets())){
+             System.out.println("String packet balance failed");
             dataValid = false;
         }else{
                  lblErrorPacketString.setText("");
+                 lblErrorPacketStringAUX.setText("");
+                 System.out.println("Packet Valid");
         }
         
         if((int) spnLength.getValue() == 0){
@@ -516,10 +572,11 @@ public class FrmMichaelDVT extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btngrpScrambled;
     private com.github.lgooddatepicker.components.DatePicker dpDateTransmited;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblDateTransmitted;
     private javax.swing.JLabel lblErrorDateTransmitted;
     private javax.swing.JLabel lblErrorPacketCount;
     private javax.swing.JLabel lblErrorPacketString;
+    private javax.swing.JLabel lblErrorPacketStringAUX;
     private javax.swing.JLabel lblErrorScrambled;
     private javax.swing.JLabel lblPacketLength;
     private javax.swing.JLabel lblPacketString;
