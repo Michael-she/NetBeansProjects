@@ -31,22 +31,25 @@ public class HangmanAutocomplete {
       
         
         
+        int numOptions = 1000000;
+        String words [] = new String [numOptions];
+        String yes[] = new String [numOptions];
         
-        String words [] = new String [1000];
-        String yes[] = new String [1000];
-        
-        String wordsLong [] =  new String [500000];
-        String yesLong[] = new String [500000];
+        String wordsLong [] =  new String [numOptions];
+        String yesLong[] = new String [numOptions];
+        String artists [] = new String [numOptions];
         
         try{
-        Scanner scFileShort = new Scanner(new File("words1000.txt"));
-        Scanner scFile = new Scanner(new File("words.txt"));
+       // Scanner scFileShort = new Scanner(new File("words1000.txt"));
+        Scanner scFileShort = new Scanner(new File("tracks_per_year.txt"));
+        
         
         
         int x = 0;
         while(scFileShort.hasNextLine()){
-            
-            words[x] = scFileShort.nextLine();
+            String line [] =  scFileShort.nextLine().split(">");
+            words[x] = line [3];
+            artists [x] = line[2];//.substring(0, line[2].indexOf('<'));
             x++;
            // System.out.println("Line Count"+ x);
         }
@@ -56,7 +59,7 @@ public class HangmanAutocomplete {
             
             int hangmanSize = Integer.parseInt(JOptionPane.showInputDialog("How many letters?"));
             
-            String wordsWithLetterCount [] = new String[1000];
+            String wordsWithLetterCount [] = new String[1000000];
             int wordsWithLetterCountSize = 0;
             for (int i = 0; i<x; i++){
                 if(words[i].length() == hangmanSize){
@@ -96,6 +99,8 @@ public class HangmanAutocomplete {
                         guessArr[guessSize][1] =(char) i;
                         guessSize++;
                         
+                        
+                        
                         }
                     }
                     for(int i = 0; i<yes.length; i++){
@@ -123,6 +128,8 @@ public class HangmanAutocomplete {
                                     
                                 }
                                 
+                                
+                                
                             }
                             
                             for(int k = 0; k<word.length(); k++){
@@ -130,7 +137,7 @@ public class HangmanAutocomplete {
                             }
                         }
                         if(toAdd){
-                            System.out.println("resultsize = " + resultSize);
+                          //  System.out.println("resultsize = " + resultSize);
                             yes[resultSize] = word;
                             resultSize++;
                             
