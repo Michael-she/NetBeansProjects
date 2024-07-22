@@ -36,8 +36,10 @@ public class MealBookingInputHeaders {
         }
 
         // Array of meal slots to cycle through
-        String[] mealSlots = {"B", "L", "D"};
-
+        //String[] mealSlots = {"B", "L", "D"};
+        String[] mealSlots = {"L", "D"};
+        
+        
         LocalDate endDate = startDate.plusDays(30);
         LocalDate date = startDate;
 
